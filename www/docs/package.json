@@ -1,0 +1,22 @@
+{
+  "name": "@backflipsjs/docs",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "~4.0.6"
+  },
+  "devDependencies": {
+    "@astrojs/tailwind": "~5.0.3",
+    "@tailwindcss/container-queries": "~0.1.1",
+    "@tailwindcss/typography": "~0.5.10",
+    "pagefind": "~1.0.4",
+    "tailwindcss": "~3.3.7"
+  }
+}
