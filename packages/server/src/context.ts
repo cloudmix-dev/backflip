@@ -1,9 +1,8 @@
-export interface ServerContext<
-  C extends Record<string, unknown>,
-  I extends Record<string, unknown> | null = null,
-> {
+import { SuperJSONObject } from "./types";
+
+export interface ServerContext<C extends Record<string, unknown>> {
   readonly req: Request;
   readonly resHeaders: Headers;
   readonly ctx: C;
-  readonly input: I;
+  readonly input: SuperJSONObject | null;
 }

@@ -2,7 +2,7 @@ import superjson from "superjson";
 
 import { type ServerContext } from "./context";
 import { NotFoundError, NotPermittedError, ServerError } from "./errors";
-import { type ExtendedJSON, type RenderedComponentConfig } from "./types";
+import { type RenderedComponentConfig, type SuperJSONObject } from "./types";
 
 export interface ServerOptions<
   C extends Record<string, unknown> = Record<string, unknown>,
@@ -68,7 +68,7 @@ export class Server<
 
       if (url.searchParams.has("data")) {
         // biome-ignore lint/style/noNonNullAssertion: we know this will be defined
-        input = superjson.parse<ExtendedJSON>(url.searchParams.get("data")!);
+        input = superjson.parse<SuperJSONObject>(url.searchParams.get("data")!);
       }
 
       const rendered = await handler({ ctx, req, resHeaders, input });
