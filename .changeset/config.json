@@ -7,10 +7,5 @@
   "access": "restricted",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
-  "ignore": [
-    "@backflipjs/docs",
-    "@backflipjs/example-expo",
-    "@backflipjs/example-nexy",
-    "@backflipjs/example-remix"
-  ]
+  "ignore": ["@backflipjs/example-expo", "@backflipjs/example-remix"]
 }
