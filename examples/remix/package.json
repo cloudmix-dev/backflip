@@ -9,9 +9,9 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@backflipjs/browser": "~0.0.2",
-    "@backflipjs/react": "~0.0.2",
-    "@backflipjs/server": "~0.0.2",
+    "@backflipjs/browser": "~0.0.3",
+    "@backflipjs/react": "~0.0.3",
+    "@backflipjs/server": "~0.0.3",
     "@remix-run/node": "~2.3.1",
     "@remix-run/react": "~2.3.1",
     "@remix-run/serve": "~2.3.1",
