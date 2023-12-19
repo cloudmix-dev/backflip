@@ -7,7 +7,9 @@ import { type RenderedComponentConfig, type SuperJSONObject } from "./types";
 export interface ServerOptions<
   C extends Record<string, unknown> = Record<string, unknown>,
 > {
-  context?: C | ((req: Request) => C | Promise<C>);
+  context?:
+    | C
+    | ((req: Request, reqCtx: Record<string, unknown>) => C | Promise<C>);
   permitRequest?: (req: Request) => boolean | Promise<boolean>;
   onError?: (error: Error) => Response | Promise<Response>;
 }
@@ -59,10 +61,19 @@ export class Server<
 
       // biome-ignore lint/style/noNonNullAssertion: we know this will be defined
       const handler = this.#componentMap.get(component)!;
+      let reqCtx = {};
+
+      if (url.searchParams.has("context")) {
+        reqCtx = superjson.parse<SuperJSONObject>(
+          // biome-ignore lint/style/noNonNullAssertion: we know this will be defined
+          url.searchParams.get("context")!,
+        );
+      }
+
       const ctx =
         typeof this.#options.context === "function"
-          ? await this.#options.context(req)
-          : this.#options.context ?? ({} as C);
+          ? await this.#options.context(req, reqCtx)
+          : this.#options.context ?? (reqCtx as C);
       const resHeaders = new Headers();
       let input = null;
 
@@ -71,7 +82,12 @@ export class Server<
         input = superjson.parse<SuperJSONObject>(url.searchParams.get("data")!);
       }
 
-      const rendered = await handler({ ctx, req, resHeaders, input });
+      const rendered = await handler({
+        ctx,
+        req,
+        resHeaders,
+        input,
+      });
 
       resHeaders.set("Content-Type", "application/json");
 

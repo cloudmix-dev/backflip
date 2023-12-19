@@ -1,8 +1,8 @@
 import { Server } from "@backflipjs/server";
 
-const server = new Server();
+const server = new Server<{ locale: string }>();
 
-server.component("home", ({ resHeaders }) => {
+server.component("home", ({ ctx, resHeaders }) => {
   const ab = Math.random() > 0.5 ? 1 : 0;
 
   resHeaders.set("Cache-Control", "public, max-age=60");
@@ -30,6 +30,12 @@ server.component("home", ({ resHeaders }) => {
         props: {
           date: new Date(),
           prefix: "It is now",
+        },
+      },
+      {
+        component: "Text",
+        props: {
+          content: `From the server: your locale is ${ctx.locale}`,
         },
       },
     ],

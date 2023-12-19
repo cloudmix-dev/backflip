@@ -16,6 +16,9 @@ registry.registerComponent(Text, { name: "Text" });
 const client = new Client({
   url: "/api/components",
   cache: new SecureStoreCache(),
+  context: () => ({
+    locale: Intl.DateTimeFormat().resolvedOptions().locale,
+  }),
 });
 
 export { registry, client };
