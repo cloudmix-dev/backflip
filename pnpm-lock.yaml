@@ -36,13 +36,13 @@ importers:
   examples/expo:
     dependencies:
       '@backflipjs/native':
-        specifier: ~0.0.1
+        specifier: ~0.0.2
         version: link:../../packages/native
       '@backflipjs/react':
-        specifier: ~0.0.1
+        specifier: ~0.0.2
         version: link:../../packages/react
       '@backflipjs/server':
-        specifier: ~0.0.1
+        specifier: ~0.0.2
         version: link:../../packages/server
       expo:
         specifier: ~50.0.0-preview.4
@@ -94,13 +94,13 @@ importers:
   examples/remix:
     dependencies:
       '@backflipjs/browser':
-        specifier: ~0.0.1
+        specifier: ~0.0.2
         version: link:../../packages/browser
       '@backflipjs/react':
-        specifier: ~0.0.1
+        specifier: ~0.0.2
         version: link:../../packages/react
       '@backflipjs/server':
-        specifier: ~0.0.1
+        specifier: ~0.0.2
         version: link:../../packages/server
       '@remix-run/node':
         specifier: ~2.3.1
@@ -141,13 +141,13 @@ importers:
         version: 8.0.0
     devDependencies:
       '@backflipjs/client':
-        specifier: workspace:~0.0.1
+        specifier: workspace:~0.0.2
         version: link:../client
 
   packages/client:
     devDependencies:
       '@backflipjs/server':
-        specifier: workspace:~0.0.1
+        specifier: workspace:~0.0.2
         version: link:../server
 
   packages/native:
@@ -157,7 +157,7 @@ importers:
         version: 12.5.0(expo@49.0.21)
     devDependencies:
       '@backflipjs/client':
-        specifier: workspace:~0.0.1
+        specifier: workspace:~0.0.2
         version: link:../client
 
   packages/react:
@@ -170,7 +170,7 @@ importers:
         version: 18.2.0(react@18.2.0)
     devDependencies:
       '@backflipjs/client':
-        specifier: workspace:~0.0.1
+        specifier: workspace:~0.0.2
         version: link:../client
       '@types/react':
         specifier: ~18.2.42
