@@ -36,13 +36,13 @@ importers:
   examples/expo:
     dependencies:
       '@backflipjs/native':
-        specifier: workspace:~0.0.1
+        specifier: ~0.0.1
         version: link:../../packages/native
       '@backflipjs/react':
-        specifier: workspace:~0.0.1
+        specifier: ~0.0.1
         version: link:../../packages/react
       '@backflipjs/server':
-        specifier: workspace:~0.0.1
+        specifier: ~0.0.1
         version: link:../../packages/server
       expo:
         specifier: ~50.0.0-preview.4
@@ -94,13 +94,13 @@ importers:
   examples/remix:
     dependencies:
       '@backflipjs/browser':
-        specifier: workspace:~0.0.1
+        specifier: ~0.0.1
         version: link:../../packages/browser
       '@backflipjs/react':
-        specifier: workspace:~0.0.1
+        specifier: ~0.0.1
         version: link:../../packages/react
       '@backflipjs/server':
-        specifier: workspace:~0.0.1
+        specifier: ~0.0.1
         version: link:../../packages/server
       '@remix-run/node':
         specifier: ~2.3.1

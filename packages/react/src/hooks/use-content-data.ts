@@ -23,10 +23,13 @@ export function useContentData(name: string, data?: Record<string, unknown>) {
           const newContentData = await client.send(name, data, { signal });
 
           setContentData(newContentData);
-        } catch (err) {
-          setError(err as Error);
-        } finally {
           setLoading(false);
+        } catch (fetchError) {
+          setError(fetchError as Error);
+
+          if ((fetchError as Error).name !== "AbortError") {
+            setLoading(false);
+          }
         }
       })();
 

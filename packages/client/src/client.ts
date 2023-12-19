@@ -93,35 +93,27 @@ export class Client {
       req = await this.#onBeforeRequest(req);
     }
 
-    try {
-      let res = await this.#fetch(req, { signal: options?.signal });
+    let res = await this.#fetch(req, { signal: options?.signal });
 
-      if (!res.ok) {
-        throw new ClientError(
-          `Failed to send to '${path}' - ${res.status} ${res.statusText}`,
-        );
-      }
-
-      if (typeof this.#onAfterResponse === "function") {
-        res = await this.#onAfterResponse(res);
-      }
-
-      const json = (await res.json()) as RenderedComponentConfig;
-
-      if (this.#cache) {
-        const cacheControl = res.headers.get("cache-control");
-        const maxAge = cacheControl ? parseCacheControl(cacheControl) : 0;
-
-        this.#cache.set(this.#createCacheKey(path, data), json, maxAge);
-      }
-
-      return json;
-    } catch (error) {
-      if ((error as Error).name !== "AbortError") {
-        throw error;
-      }
-
-      return null;
+    if (!res.ok) {
+      throw new ClientError(
+        `Failed to send to '${path}' - ${res.status} ${res.statusText}`,
+      );
     }
+
+    if (typeof this.#onAfterResponse === "function") {
+      res = await this.#onAfterResponse(res);
+    }
+
+    const json = (await res.json()) as RenderedComponentConfig;
+
+    if (this.#cache) {
+      const cacheControl = res.headers.get("cache-control");
+      const maxAge = cacheControl ? parseCacheControl(cacheControl) : 0;
+
+      this.#cache.set(this.#createCacheKey(path, data), json, maxAge);
+    }
+
+    return json;
   }
 }
