@@ -45,8 +45,6 @@ export class IDBCache extends BaseCache {
     const store = tx.objectStore(this.#storeName);
     const value = await store.get(key);
 
-    console.log("CACHED", key, value);
-
     if (value) {
       const ttlStore = tx.objectStore(this.#ttlStoreName);
       const ttl = await ttlStore.get(key);

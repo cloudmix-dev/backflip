@@ -9,12 +9,14 @@ interface RenderContentProps {
   default?: RenderedComponentConfig;
   fallback?: React.ReactNode | React.ReactNode[];
   loading?: React.ReactNode | React.ReactNode[];
+  error?: React.ReactNode | React.ReactNode[];
 }
 
 export function RenderComponent({
   name,
   data,
   default: defaultData,
+  error: renderError,
   fallback: renderFallback,
   loading: renderLoading,
 }: RenderContentProps) {
@@ -28,7 +30,11 @@ export function RenderComponent({
     return null;
   }
 
-  if (error || (!contentData && !loading)) {
+  if (error && renderError) {
+    return <>{renderError}</>;
+  }
+
+  if (!contentData && !loading) {
     if (defaultData) {
       return <RenderBlock {...defaultData} />;
     }
