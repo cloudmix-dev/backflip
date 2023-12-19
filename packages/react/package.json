@@ -1,6 +1,6 @@
 {
   "name": "@backflipjs/react",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
@@ -8,7 +8,7 @@
     "prepare": "npm run build"
   },
   "devDependencies": {
-    "@backflipjs/client": "workspace:~0.0.3",
+    "@backflipjs/client": "workspace:~0.0.4",
     "@types/react": "~18.2.42",
     "react": "~18.2.0"
   },
