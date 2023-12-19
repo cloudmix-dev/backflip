@@ -1,0 +1,16 @@
+{
+  "$schema": "https://unpkg.com/@changesets/config@3.0.0/schema.json",
+  "changelog": "@changesets/cli/changelog",
+  "commit": false,
+  "fixed": [["@backflipjs/*"]],
+  "linked": [],
+  "access": "restricted",
+  "baseBranch": "main",
+  "updateInternalDependencies": "patch",
+  "ignore": [
+    "@backflipjs/docs",
+    "@backflipjs/example-expo",
+    "@backflipjs/example-nexy",
+    "@backflipjs/example-remix"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "expo": {
+    "name": "backflipjs-example-expo",
+    "slug": "backflipjs-example-expo",
+    "scheme": "backflipjs-example-expo",
+    "version": "0.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "server",
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "expo-router",
+        {
+          "origin": "https://acme.com",
+          "asyncRoutes": {
+            "web": true,
+            "default": "development"
+          }
+        }
+      ]
+    ]
+  }
+}
