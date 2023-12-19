@@ -1,4 +1,5 @@
 import { type RenderedComponentConfig } from "@backflipjs/server";
+import superjson from "superjson";
 
 import { Cache } from "./cache";
 import { ClientError } from "./errors";
@@ -79,7 +80,7 @@ export class Client {
     }
 
     if (data) {
-      url.searchParams.set("data", JSON.stringify(data));
+      url.searchParams.set("data", superjson.stringify(data));
     }
 
     let req = new Request(url.toString(), {
@@ -105,7 +106,7 @@ export class Client {
       res = await this.#onAfterResponse(res);
     }
 
-    const json = (await res.json()) as RenderedComponentConfig;
+    const json = superjson.parse(await res.text()) as RenderedComponentConfig;
 
     if (this.#cache) {
       const cacheControl = res.headers.get("cache-control");

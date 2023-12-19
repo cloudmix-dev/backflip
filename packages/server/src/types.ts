@@ -1,13 +1,9 @@
-type JSONValue = string | number | boolean | null | JSONObject | JSONArray;
+import { type SuperJSON } from "superjson";
 
-interface JSONObject {
-  [x: string]: JSONValue;
-}
-
-type JSONArray = Array<JSONValue>;
+export type ExtendedJSON = Parameters<SuperJSON["serialize"]>[0];
 
 export interface RenderedComponentConfig {
   component: string;
-  props?: JSONObject;
+  props?: ExtendedJSON;
   children?: RenderedComponentConfig[];
 }

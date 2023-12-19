@@ -1,6 +1,8 @@
+import superjson from "superjson";
+
 import { type ServerContext } from "./context";
 import { NotFoundError, NotPermittedError, ServerError } from "./errors";
-import { type RenderedComponentConfig } from "./types";
+import { type ExtendedJSON, type RenderedComponentConfig } from "./types";
 
 export interface ServerOptions<
   C extends Record<string, unknown> = Record<string, unknown>,
@@ -66,14 +68,14 @@ export class Server<
 
       if (url.searchParams.has("data")) {
         // biome-ignore lint/style/noNonNullAssertion: we know this will be defined
-        input = JSON.parse(url.searchParams.get("data")!);
+        input = superjson.parse<ExtendedJSON>(url.searchParams.get("data")!);
       }
 
       const rendered = await handler({ ctx, req, resHeaders, input });
 
       resHeaders.set("Content-Type", "application/json");
 
-      return new Response(JSON.stringify(rendered), {
+      return new Response(superjson.stringify(rendered), {
         headers: resHeaders,
       });
     } catch (error) {
@@ -87,7 +89,7 @@ export class Server<
 
       if (error instanceof ServerError) {
         if (error instanceof NotFoundError) {
-          return new Response(JSON.stringify({ error: "Not found" }), {
+          return new Response(superjson.stringify({ error: "Not found" }), {
             status: 404,
             headers: {
               "Content-Type": "application/json",
@@ -96,7 +98,7 @@ export class Server<
         }
 
         if (error instanceof NotPermittedError) {
-          return new Response(JSON.stringify({ error: "Forbidden" }), {
+          return new Response(superjson.stringify({ error: "Forbidden" }), {
             status: 403,
             headers: {
               "Content-Type": "application/json",
@@ -105,12 +107,15 @@ export class Server<
         }
       }
 
-      return new Response(JSON.stringify({ error: "Internal server error" }), {
-        status: 500,
-        headers: {
-          "Content-Type": "application/json",
+      return new Response(
+        superjson.stringify({ error: "Internal server error" }),
+        {
+          status: 500,
+          headers: {
+            "Content-Type": "application/json",
+          },
         },
-      });
+      );
     }
   }
 }
