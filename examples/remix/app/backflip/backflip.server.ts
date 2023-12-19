@@ -25,6 +25,13 @@ server.component("home", ({ resHeaders }) => {
           variant: ab ? "primary" : "secondary",
         },
       },
+      {
+        component: "DateTime",
+        props: {
+          date: new Date(),
+          prefix: "It is now",
+        },
+      },
     ],
   };
 });

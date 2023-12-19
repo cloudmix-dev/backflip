@@ -1,7 +1,11 @@
-import { type RenderedComponentConfig } from "@backflipjs/react";
+import {
+  RenderComponent,
+  type RenderedComponentConfig,
+} from "@backflipjs/react";
 
 import { Button } from "../components/button";
 import { Container } from "../components/container";
+import { DateTime } from "../components/date-time";
 import { Text } from "../components/text";
 
 const DEFAULT: RenderedComponentConfig = {
@@ -20,10 +24,15 @@ const DEFAULT: RenderedComponentConfig = {
         variant: "primary",
       },
     },
+    {
+      component: "DateTime",
+      props: {
+        date: new Date(),
+        prefix: "It is now",
+      },
+    },
   ],
 };
-
-import { RenderComponent } from "@backflipjs/react";
 
 export default function HomeScreen() {
   return (
@@ -34,6 +43,7 @@ export default function HomeScreen() {
         <Container>
           <Text.Skeleton />
           <Button.Skeleton />
+          <DateTime.Skeleton />
         </Container>
       }
     />
