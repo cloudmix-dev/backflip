@@ -9,23 +9,21 @@ server.component("home", ({ resHeaders }) => {
 
   return {
     component: "Container",
-    props: {
-      columns: 3,
-    },
     children: [
+      {
+        component: "Text",
+        props: {
+          content: ab
+            ? "Below is a primary button"
+            : "Below is a secondary button",
+        },
+      },
       {
         component: "Button",
         props: {
+          label: ab ? "Primary button" : "Secondary button",
           variant: ab ? "primary" : "secondary",
         },
-        children: [
-          {
-            component: "Text",
-            props: {
-              content: ab ? "Primary button" : "Secondary button",
-            },
-          },
-        ],
       },
     ],
   };

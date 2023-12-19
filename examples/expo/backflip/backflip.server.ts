@@ -8,11 +8,24 @@ server.component("home", ({ resHeaders }) => {
   resHeaders.set("Cache-Control", "public, max-age=60");
 
   return {
-    component: "Button",
-    props: {
-      label: ab ? "Primary button" : "Secondary button",
-      variant: ab ? "primary" : "secondary",
-    },
+    component: "Container",
+    children: [
+      {
+        component: "Text",
+        props: {
+          content: ab
+            ? "Below is a primary button"
+            : "Below is a secondary button",
+        },
+      },
+      {
+        component: "Button",
+        props: {
+          label: ab ? "Primary button" : "Secondary button",
+          variant: ab ? "primary" : "secondary",
+        },
+      },
+    ],
   };
 });
 

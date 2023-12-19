@@ -4,26 +4,24 @@ import {
 } from "@backflipjs/react";
 
 import { Button } from "~/components/button";
+import { Container } from "~/components/container";
+import { Text } from "~/components/text";
 
 const DEFAULT: RenderedComponentConfig = {
   component: "Container",
-  props: {
-    columns: 1,
-  },
   children: [
+    {
+      component: "Text",
+      props: {
+        content: "Below is a primary button",
+      },
+    },
     {
       component: "Button",
       props: {
+        label: "Primary button",
         variant: "primary",
       },
-      children: [
-        {
-          component: "Text",
-          props: {
-            content: "Default button",
-          },
-        },
-      ],
     },
   ],
 };
@@ -33,7 +31,12 @@ export default function Home() {
     <RenderComponent
       name="home"
       default={DEFAULT}
-      loading={<Button.Skeleton />}
+      loading={
+        <Container>
+          <Text.Skeleton />
+          <Button.Skeleton />
+        </Container>
+      }
     />
   );
 }
