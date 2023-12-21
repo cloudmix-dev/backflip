@@ -7,6 +7,9 @@
     "build": "tsc",
     "prepare": "npm run build"
   },
+  "dependencies": {
+    "idb": "~8.0.0"
+  },
   "devDependencies": {
     "@backflipjs/client": "workspace:~0.0.4",
     "@types/react": "~18.2.42",
@@ -14,8 +17,5 @@
   },
   "peerDependencies": {
     "react": "~18.2.0"
-  },
-  "dependencies": {
-    "idb": "~8.0.0"
   }
 }
