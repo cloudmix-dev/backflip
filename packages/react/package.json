@@ -1,22 +1,21 @@
 {
   "name": "@backflipjs/react",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsc",
     "prepare": "npm run build"
   },
+  "dependencies": {
+    "idb": "~8.0.0"
+  },
   "devDependencies": {
-    "@backflipjs/client": "workspace:~0.0.2",
+    "@backflipjs/client": "workspace:~0.0.4",
     "@types/react": "~18.2.42",
     "react": "~18.2.0"
   },
   "peerDependencies": {
-    "react": "~18.2.0",
-    "react-dom": "~18.2.0"
-  },
-  "dependencies": {
-    "idb": "~8.0.0"
+    "react": "~18.2.0"
   }
 }

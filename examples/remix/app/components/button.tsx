@@ -1,8 +1,9 @@
 interface ButtonProps {
-  variant: "primary" | "secondary";
+  label: string;
+  variant?: "primary" | "secondary";
 }
 
-function Button({ children, variant }: React.PropsWithChildren<ButtonProps>) {
+function Button({ label, variant }: ButtonProps) {
   const classes =
     variant === "primary"
       ? "bg-indigo-600 hover:bg-indigo-500 focus-visible:outline-indigo-600"
@@ -13,7 +14,7 @@ function Button({ children, variant }: React.PropsWithChildren<ButtonProps>) {
       type="button"
       className={`inline-flex justify-center items-center rounded-md px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${classes}`}
     >
-      {children}
+      {label}
     </button>
   );
 }

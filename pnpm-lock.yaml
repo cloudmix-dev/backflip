@@ -36,13 +36,13 @@ importers:
   examples/expo:
     dependencies:
       '@backflipjs/native':
-        specifier: ~0.0.2
+        specifier: ~0.0.4
         version: link:../../packages/native
       '@backflipjs/react':
-        specifier: ~0.0.2
+        specifier: ~0.0.4
         version: link:../../packages/react
       '@backflipjs/server':
-        specifier: ~0.0.2
+        specifier: ~0.0.4
         version: link:../../packages/server
       expo:
         specifier: ~50.0.0-preview.4
@@ -94,13 +94,13 @@ importers:
   examples/remix:
     dependencies:
       '@backflipjs/browser':
-        specifier: ~0.0.2
+        specifier: ~0.0.4
         version: link:../../packages/browser
       '@backflipjs/react':
-        specifier: ~0.0.2
+        specifier: ~0.0.4
         version: link:../../packages/react
       '@backflipjs/server':
-        specifier: ~0.0.2
+        specifier: ~0.0.4
         version: link:../../packages/server
       '@remix-run/node':
         specifier: ~2.3.1
@@ -141,13 +141,17 @@ importers:
         version: 8.0.0
     devDependencies:
       '@backflipjs/client':
-        specifier: workspace:~0.0.2
+        specifier: workspace:~0.0.4
         version: link:../client
 
   packages/client:
+    dependencies:
+      superjson:
+        specifier: ~1.13.3
+        version: 1.13.3
     devDependencies:
       '@backflipjs/server':
-        specifier: workspace:~0.0.2
+        specifier: workspace:~0.0.4
         version: link:../server
 
   packages/native:
@@ -157,7 +161,7 @@ importers:
         version: 12.5.0(expo@49.0.21)
     devDependencies:
       '@backflipjs/client':
-        specifier: workspace:~0.0.2
+        specifier: workspace:~0.0.4
         version: link:../client
 
   packages/react:
@@ -165,12 +169,9 @@ importers:
       idb:
         specifier: ~8.0.0
         version: 8.0.0
-      react-dom:
-        specifier: ~18.2.0
-        version: 18.2.0(react@18.2.0)
     devDependencies:
       '@backflipjs/client':
-        specifier: workspace:~0.0.2
+        specifier: workspace:~0.0.4
         version: link:../client
       '@types/react':
         specifier: ~18.2.42
@@ -179,7 +180,11 @@ importers:
         specifier: ~18.2.0
         version: 18.2.0
 
-  packages/server: {}
+  packages/server:
+    dependencies:
+      superjson:
+        specifier: ~1.13.3
+        version: 1.13.3
 
   www/docs:
     dependencies:
@@ -6932,6 +6937,13 @@ packages:
     resolution: {integrity: sha512-U71cyTamuh1CRNCfpGY6to28lxvNwPG4Guz/EVjgf3Jmzv0vlDp1atT9eS5dDjMYHucpHbWns6Lwf3BKz6svdw==}
     engines: {node: '>= 0.6'}
 
+  /copy-anything@3.0.5:
+    resolution: {integrity: sha512-yCEafptTtb4bk7GLEQoM8KVJpxAfdBJYaXyzQEgQQQgYrZiDp8SJmGKlYza6CYjEDNstAdNdKA3UuoULlEbS6w==}
+    engines: {node: '>=12.13'}
+    dependencies:
+      is-what: 4.1.16
+    dev: false
+
   /core-js-compat@3.34.0:
     resolution: {integrity: sha512-4ZIyeNbW/Cn1wkMMDy+mvrRUxrwFNjKwbhCfQpDd+eLgYipDqp8oGFGtLmhh18EDPKA0g3VUBYOxQGGwvWLVpA==}
     dependencies:
@@ -9985,6 +9997,11 @@ packages:
     dependencies:
       call-bind: 1.0.5
       get-intrinsic: 1.2.2
+    dev: false
+
+  /is-what@4.1.16:
+    resolution: {integrity: sha512-ZhMwEosbFJkA0YhFnNDgTM4ZxDRsS6HqTo7qsZM08fehyRYIYa0yHu5R6mgo1n/8MgaPBXiPimPD77baVFYg+A==}
+    engines: {node: '>=12.13'}
     dev: false
 
   /is-windows@1.0.2:
@@ -15201,6 +15218,13 @@ packages:
 
   /sudo-prompt@9.2.1:
     resolution: {integrity: sha512-Mu7R0g4ig9TUuGSxJavny5Rv0egCEtpZRNMrZaYS1vxkiIxGiGUwoezU3LazIQ+KE04hTrTfNPgxU5gzi7F5Pw==}
+    dev: false
+
+  /superjson@1.13.3:
+    resolution: {integrity: sha512-mJiVjfd2vokfDxsQPOwJ/PtanO87LhpYY88ubI5dUB1Ab58Txbyje3+jpm+/83R/fevaq/107NNhtYBLuoTrFg==}
+    engines: {node: '>=10'}
+    dependencies:
+      copy-anything: 3.0.5
     dev: false
 
   /supports-color@5.5.0:

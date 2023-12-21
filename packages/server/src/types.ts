@@ -1,13 +1,35 @@
-type JSONValue = string | number | boolean | null | JSONObject | JSONArray;
+type PrimitiveJSONValue = string | number | boolean | undefined | null;
 
-interface JSONObject {
-  [x: string]: JSONValue;
-}
+type JSONValue = PrimitiveJSONValue | JSONArray | JSONObject;
 
 type JSONArray = Array<JSONValue>;
 
+export interface JSONObject {
+  [key: string]: JSONValue;
+}
+
+type SerializableJSONValue =
+  | symbol
+  | Set<SuperJSONValue>
+  | Map<SuperJSONValue, SuperJSONValue>
+  | undefined
+  | bigint
+  | Date
+  | RegExp;
+
+export type SuperJSONArray = Array<SuperJSONValue>;
+export interface SuperJSONObject {
+  [key: string]: SuperJSONValue;
+}
+
+type SuperJSONValue =
+  | JSONValue
+  | SerializableJSONValue
+  | SuperJSONArray
+  | SuperJSONObject;
+
 export interface RenderedComponentConfig {
   component: string;
-  props?: JSONObject;
+  props?: SuperJSONObject;
   children?: RenderedComponentConfig[];
 }

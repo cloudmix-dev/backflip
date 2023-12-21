@@ -1,4 +1,5 @@
 import { type RenderedComponentConfig } from "@backflipjs/server";
+import superjson from "superjson";
 
 import { Cache } from "./cache";
 import { ClientError } from "./errors";
@@ -12,6 +13,9 @@ export interface ClientSendOptions {
 
 export interface ClientOptions {
   cache?: boolean | Cache;
+  context?:
+    | Record<string, unknown>
+    | (() => Record<string, unknown> | Promise<Record<string, unknown>>);
   fetch?: GlobalFetch;
   onBeforeRequest?: (req: Request) => Request | Promise<Request>;
   onAfterResponse?: (res: Response) => Response | Promise<Response>;
@@ -25,15 +29,12 @@ export class Client {
 
   readonly #url: URL;
 
-  readonly #onBeforeRequest?: (req: Request) => Request | Promise<Request>;
-
-  readonly #onAfterResponse?: (res: Response) => Response | Promise<Response>;
+  readonly #options: ClientOptions;
 
   constructor(options: ClientOptions) {
     this.#fetch = options.fetch ?? this.#fetch;
     this.#url = this.#sanitizeUrl(options.url);
-    this.#onBeforeRequest = options.onBeforeRequest;
-    this.#onAfterResponse = options.onAfterResponse;
+    this.#options = options;
 
     if (options.cache) {
       this.#cache =
@@ -79,7 +80,19 @@ export class Client {
     }
 
     if (data) {
-      url.searchParams.set("data", JSON.stringify(data));
+      url.searchParams.set("data", superjson.stringify(data));
+    }
+
+    if (this.#options.context) {
+      let context = this.#options.context;
+
+      if (typeof context === "function") {
+        context = await context();
+      }
+
+      if (context) {
+        url.searchParams.set("context", superjson.stringify(context));
+      }
     }
 
     let req = new Request(url.toString(), {
@@ -89,8 +102,8 @@ export class Client {
       },
     });
 
-    if (typeof this.#onBeforeRequest === "function") {
-      req = await this.#onBeforeRequest(req);
+    if (typeof this.#options.onBeforeRequest === "function") {
+      req = await this.#options.onBeforeRequest(req);
     }
 
     let res = await this.#fetch(req, { signal: options?.signal });
@@ -101,11 +114,11 @@ export class Client {
       );
     }
 
-    if (typeof this.#onAfterResponse === "function") {
-      res = await this.#onAfterResponse(res);
+    if (typeof this.#options.onAfterResponse === "function") {
+      res = await this.#options.onAfterResponse(res);
     }
 
-    const json = (await res.json()) as RenderedComponentConfig;
+    const json = superjson.parse(await res.text()) as RenderedComponentConfig;
 
     if (this.#cache) {
       const cacheControl = res.headers.get("cache-control");
