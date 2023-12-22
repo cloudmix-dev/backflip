@@ -1,7 +1,7 @@
 import { Provider } from "@backflipjs/react";
 import { Slot } from "expo-router";
 
-import { client, registry } from "../backflip/backflip.client";
+import { client, registry } from "../backflip/client";
 
 export default function RootLayout() {
   return (
