@@ -1,5 +1,5 @@
 ---
-
+import { Button, Code, Logo, Prose, ThemeSelector } from "@cloudmix-dev/react";
 ---
 
 <html lang="en" class="h-full w-full">
@@ -8,21 +8,29 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>Server-driven UI | Backflip</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@900&family=Inter:wght@400;600&family=Source+Code+Pro&display=swap" rel="stylesheet">
 	</head>
 	<body class="h-full w-full bg-neutral-50 text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100">
-		<nav></nav>
+		<nav>
+      <div class="container m-auto px-4">
+        <div class="flex justify-end items-center h-16">
+          <ThemeSelector client:only />
+        </div>
+      </div>
+    </nav>
     <main>
       <div class="container m-auto px-4">
-        <h1 class="text-8xl font-display font-black uppercase">
-          Backflip
-        </h1>
-        <p>
-          Simple server-driven UI primitives
-        </p>
+        <Logo text="Backflip" size="lg" footer />
+        <Prose>
+          <Prose.P>
+            Simple server-driven UI primitives
+          </Prose.P>
+        </Prose>
+        <Button variant="primary">Test</Button>
+        <Code client:idle language="typescript" content={`import { thing } from "package";\n\nexport default thing();`}` />
       </div>
     </main>
     <footer></footer>
