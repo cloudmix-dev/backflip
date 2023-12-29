@@ -1,0 +1,7 @@
+name = "backflip-docs"
+main = "./src/server.mjs"
+assets = "./build/client"
+compatibility_date = "2023-04-20"
+
+workers_dev = false
+routes = [{ pattern = "backflip.cloudmix.dev", custom_domain = true }]
