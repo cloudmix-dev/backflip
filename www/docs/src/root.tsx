@@ -1,4 +1,4 @@
-import { ThemeSelector } from "@cloudmix-dev/react";
+import { AppShell, ThemeSelector } from "@cloudmix-dev/react";
 import { type LoaderFunctionArgs, json } from "@remix-run/cloudflare";
 import {
   Links,
@@ -32,14 +32,12 @@ export default function App() {
         <Links />
       </head>
       <body className="h-full w-full bg-neutral-50 text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100">
-        <div className="flex flex-col h-full w-full">
-          <nav className="flex-shrink-0">
-            <div className="container m-auto px-4">
-              <div className="flex justify-end items-center h-16">
-                <ThemeSelector cookie="_theme" localStorageKey="theme" />
-              </div>
-            </div>
-          </nav>
+        <AppShell
+          renderActions={
+            <ThemeSelector cookie="_theme" localStorageKey="theme" />
+          }
+          test
+        >
           <main className="flex-grow pb-6 md:pb-12">
             <div className="container m-auto px-4">
               <Outlet />
@@ -52,7 +50,7 @@ export default function App() {
               </div>
             </div>
           </footer>
-        </div>
+        </AppShell>
         <ScrollRestoration />
         <Scripts />
         <LiveReload />

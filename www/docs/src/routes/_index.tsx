@@ -213,8 +213,8 @@ if (config.component === "Text") {
             </section>
             <section>
               <h2 id="how-it-works">How it works</h2>
-              <h3 id="server">Server</h3>
-              <h3 id="client">Client</h3>
+              <h3 id="server-2">Server</h3>
+              <h3 id="client-2">Client</h3>
               <h3 id="components">Components</h3>
               <h3 id="cache">Cache</h3>
             </section>
@@ -231,7 +231,7 @@ if (config.component === "Text") {
             </section>
           </Prose>
         </article>
-        <div className="hidden p-6 rounded-lg border border-neutral-200 dark:border-neutral-800 lg:block lg:sticky lg:top-[1.5rem]">
+        <div className="hidden p-6 rounded-lg border border-neutral-200 dark:border-neutral-800 lg:block lg:sticky lg:top-[0.5rem]">
           <TableOfContents querySelector="article" />
         </div>
       </div>
