@@ -1,4 +1,4 @@
-name: Storybook
+name: Docs
 
 run-name: Publishing new Documentation build (via ${{ github.actor }}) 📖
 
@@ -35,6 +35,6 @@ jobs:
         uses: cloudflare/wrangler-action@v3
         with:
           packageManager: pnpm
-          workingDirectory: "www/storybook"
+          workingDirectory: "www/docs"
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
