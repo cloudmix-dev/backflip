@@ -1,9 +1,12 @@
-import { type RenderedComponentConfig } from "@backflipjs/client";
+import {
+  type RenderedComponentConfig,
+  type SuperJSONObject,
+} from "@backflipjs/client";
 import { useEffect, useState } from "react";
 
 import { useContext } from "./use-context";
 
-export function useContentData(name: string, data?: Record<string, unknown>) {
+export function useContentData(name: string, data?: SuperJSONObject) {
   const [loading, setLoading] = useState(true);
   const [contentData, setContentData] =
     useState<RenderedComponentConfig | null>(null);

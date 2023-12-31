@@ -1,8 +1,11 @@
 import { SuperJSONObject } from "./types";
 
-export interface ServerContext<C extends Record<string, unknown>> {
+export interface ServerContext<
+  C extends SuperJSONObject = SuperJSONObject,
+  I extends SuperJSONObject = SuperJSONObject,
+> {
   readonly req: Request;
   readonly resHeaders: Headers;
   readonly ctx: C;
-  readonly input: SuperJSONObject | null;
+  readonly input: I;
 }
