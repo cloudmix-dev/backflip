@@ -1,26 +1,29 @@
-import { type RenderedComponentConfig } from "@backflipjs/client";
+import {
+  type RenderedComponentConfig,
+  type SuperJSONObject,
+} from "@backflipjs/client";
 
 import { useContentData } from "../hooks/use-content-data";
 import { RenderBlock } from "./render-block";
 
 interface RenderContentProps {
   name: string;
-  data?: Record<string, unknown>;
   default?: RenderedComponentConfig;
-  fallback?: React.ReactNode | React.ReactNode[];
-  loading?: React.ReactNode | React.ReactNode[];
   error?: React.ReactNode | React.ReactNode[];
+  fallback?: React.ReactNode | React.ReactNode[];
+  input?: SuperJSONObject;
+  loading?: React.ReactNode | React.ReactNode[];
 }
 
 export function RenderComponent({
   name,
-  data,
   default: defaultData,
   error: renderError,
+  input,
   fallback: renderFallback,
   loading: renderLoading,
 }: RenderContentProps) {
-  const { data: contentData, loading, error } = useContentData(name, data);
+  const { data: contentData, loading, error } = useContentData(name, input);
 
   if (loading) {
     if (renderLoading) {

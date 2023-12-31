@@ -1,4 +1,7 @@
-import { type RenderedComponentConfig } from "@backflipjs/server";
+import {
+  type RenderedComponentConfig,
+  type SuperJSONObject,
+} from "@backflipjs/server";
 import superjson from "superjson";
 
 import { Cache } from "./cache";
@@ -14,8 +17,8 @@ export interface ClientSendOptions {
 export interface ClientOptions {
   cache?: boolean | Cache;
   context?:
-    | Record<string, unknown>
-    | (() => Record<string, unknown> | Promise<Record<string, unknown>>);
+    | SuperJSONObject
+    | (() => SuperJSONObject | Promise<SuperJSONObject>);
   fetch?: GlobalFetch;
   onBeforeRequest?: (req: Request) => Request | Promise<Request>;
   onAfterResponse?: (res: Response) => Response | Promise<Response>;
@@ -54,7 +57,7 @@ export class Client {
     return new URL(url);
   }
 
-  #createCacheKey(path: string, data?: Record<string, unknown>) {
+  #createCacheKey(path: string, data?: SuperJSONObject) {
     const dataKey = data
       ? JSON.stringify(
           Object.entries(data).sort(([a], [b]) => a.localeCompare(b)),
@@ -66,7 +69,7 @@ export class Client {
 
   async send(
     path: string,
-    data?: Record<string, unknown>,
+    data?: SuperJSONObject,
     options?: ClientSendOptions,
   ) {
     const url = new URL(`${this.#url.pathname}/${path}`, this.#url);

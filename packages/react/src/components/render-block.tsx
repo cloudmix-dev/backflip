@@ -1,8 +1,10 @@
+import { type SuperJSONObject } from "@backflipjs/client";
+
 import { useContext } from "../hooks/use-context";
 
 interface RenderBlockProps {
   component: string;
-  props?: Record<string, unknown>;
+  props?: SuperJSONObject;
   children?: RenderBlockProps[];
 }
 

@@ -256,9 +256,19 @@ return <RenderComponent {...config} />;
                 language="typescript"
                 content={`import { Server } from "@backflipjs/server";
 
-const server = new Server<{ locale: string }>();
+interface ServerContext {
+  locale: string;
+}
 
-server.component("home", ({ ctx, resHeaders }) => {
+const server = new Server<ServerContext>();
+
+interface HomeInput {
+  buttonVariant?: "primary" | "secondary";
+}
+
+server.component<HomeInput>("home", ({ ctx, input, resHeaders }) => {
+  // Read a value from the \`input\` object
+  const { buttonVariant } = input;
   // Run a convoluted "A/B" test
   const ab = Math.random() > 0.5 ? 1 : 0;
 
@@ -280,8 +290,8 @@ server.component("home", ({ ctx, resHeaders }) => {
       {
         component: "Button",
         props: {
-          label: ab ? "Primary button" : "Secondary button",
-          variant: ab ? "primary" : "secondary",
+          label: \`\${buttonVariant} button\`,
+          variant: buttonVariant,
         },
       },
       {
@@ -335,6 +345,12 @@ export default app;`}
                 <code>component</code> <code>name</code>. Apart from that, you
                 can customise your setup as you see fit.
               </p>
+              <h4 id="context">Input</h4>
+              <p>
+                A <code>Client</code> can pass some <code>input</code> to the{" "}
+                <code>Server</code> when requesting a <code>component</code>,
+                which can then be used in the <code>component()</code> callback.
+              </p>
               <h4 id="context">Context</h4>
               <p>
                 The <code>component()</code> method provides a <code>ctx</code>{" "}
@@ -354,7 +370,11 @@ export default app;`}
                 language="typescript"
                 content={`import { Server } from "@backflipjs/server";
 
-const server = new Server<{ locale: string }>({
+interface ServerContext {
+  locale: string;
+}
+
+const server = new Server<ServerContext>({
   // \`reqCtx\` is the incoming request context object
   context: (req, reqCtx) => ({ locale: reqCtx.locale ?? "en-US" }),
 });
@@ -372,9 +392,9 @@ const server = new Server<{ locale: string }>({
                 >
                   SuperJSON
                 </a>{" "}
-                to serialise/deserialise data, so your <code>ctx</code> and{" "}
-                <code>props</code> definitions can include (as well as valid{" "}
-                <code>JSON</code> values):
+                to serialise/deserialise data, so your <code>input</code>,{" "}
+                <code>ctx</code> and <code>props</code> definitions can include
+                (as well as valid <code>JSON</code> values):
               </p>
               <ul>
                 <li>
@@ -514,7 +534,7 @@ const client = new Client({
               </p>
               <p>
                 While ensuring your configurations include fresh data is
-                desriable in many situations, there will also likely be{" "}
+                desirable in many situations, there will also likely be{" "}
                 <code>components</code> whose configuration rarely change - in
                 these cases, you can utilize a <code>Cache</code>.
               </p>
@@ -610,6 +630,74 @@ function App() {
                 warnings when for various misconfigurations that can occurr as
                 you develop your application with <em>Backflip</em>.
               </p>
+              <p>
+                To render your components, you can use the{" "}
+                <code>RenderComponent</code> component:
+              </p>
+              <Code
+                language="typescript"
+                content={`import { RenderComponent } from "@backflipjs/react";
+
+// ...
+
+return <RenderComponent name="example" />;
+
+//...`}
+                copy
+              />
+              <p>
+                As well as the mandatory <code>name</code> prop, you can also
+                pass the following <em>optional</em> props:
+              </p>
+              <ul>
+                <li>
+                  <code>default</code> - a default configuration to use if the
+                  request to the <code>Server</code> fails
+                </li>
+                <li>
+                  <code>error</code> - a <em>React</em> component to render if
+                  the component fails to render due to an error (typically from
+                  the <code>Server</code>)
+                </li>
+                <li>
+                  <code>fallback</code> - a <em>React</em> component to render
+                  if the component fails to render for any reason
+                </li>
+                <li>
+                  <code>input</code> - an <code>input</code> value to be passed
+                  to the <code>Server</code> when processing the request
+                </li>
+                <li>
+                  <code>loading</code> - a <em>React</em> component to render
+                  while the component is loading a request from the{" "}
+                  <code>Server</code>
+                </li>
+              </ul>
+              <Code
+                language="typescript"
+                content={`import { RenderComponent } from "@backflipjs/react";
+
+// ...
+
+return (
+  <RenderComponent
+    name="example"
+    default={{
+      component: "Text",
+      props: {
+        content: "This is a default text component",
+      },
+    }}
+    error={<p>There was an error rendering this component</p>}
+    fallback={<p>This component is not available</p>}
+    input={{ buttonVariant: "primary" }}
+    loading={<p>Loading...</p>}
+  />
+);
+
+//...`}
+                copy
+              />
               <p>
                 An example <em>React</em> <em>Remix</em> application can be
                 found in the{" "}

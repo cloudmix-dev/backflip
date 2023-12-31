@@ -1,4 +1,7 @@
-import { type RenderedComponentConfig } from "@backflipjs/server";
+import {
+  type RenderedComponentConfig,
+  type SuperJSONObject,
+} from "@backflipjs/server";
 
 import { Cache } from "./cache";
 import { Client, type ClientOptions, type ClientSendOptions } from "./client";
@@ -14,4 +17,5 @@ export {
   type ClientSendOptions,
   type ComponentDefinition,
   type RenderedComponentConfig,
+  type SuperJSONObject,
 };

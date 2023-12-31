@@ -5,8 +5,8 @@ import { NotFoundError, NotPermittedError, ServerError } from "./errors";
 import { type RenderedComponentConfig, type SuperJSONObject } from "./types";
 
 export interface ServerOptions<
-  C extends Record<string, unknown> = Record<string, unknown>,
-  RC extends Record<string, unknown> = Record<string, unknown>,
+  C extends SuperJSONObject = SuperJSONObject,
+  RC extends SuperJSONObject = SuperJSONObject,
 > {
   context?: C | ((req: Request, reqCtx: RC) => C | Promise<C>);
   permitRequest?: (req: Request) => boolean | Promise<boolean>;
@@ -14,15 +14,15 @@ export interface ServerOptions<
 }
 
 export type ScreenRequestHandler<
-  C extends Record<string, unknown> = Record<string, unknown>,
+  C extends SuperJSONObject = SuperJSONObject,
+  I extends SuperJSONObject = SuperJSONObject,
 > = (
-  ctx: ServerContext<C>,
+  ctx: ServerContext<C, I>,
 ) => RenderedComponentConfig | Promise<RenderedComponentConfig>;
 
-export class Server<
-  C extends Record<string, unknown> = Record<string, unknown>,
-> {
-  readonly #componentMap = new Map<string, ScreenRequestHandler<C>>();
+export class Server<C extends SuperJSONObject = SuperJSONObject> {
+  // biome-ignore lint/suspicious/noExplicitAny: the input type can be any shape
+  readonly #componentMap = new Map<string, ScreenRequestHandler<C, any>>();
 
   readonly #options: ServerOptions<C>;
 
@@ -30,7 +30,10 @@ export class Server<
     this.#options = options;
   }
 
-  component(path: string, handler: ScreenRequestHandler<C>) {
+  component<I extends SuperJSONObject = SuperJSONObject>(
+    path: string,
+    handler: ScreenRequestHandler<C, I>,
+  ) {
     if (this.#componentMap.has(path)) {
       throw new ServerError(`Component '${path}' already registered`);
     }
@@ -74,11 +77,13 @@ export class Server<
           ? await this.#options.context(req, reqCtx)
           : this.#options.context ?? (reqCtx as C);
       const resHeaders = new Headers();
-      let input = null;
+      let input = {};
 
-      if (url.searchParams.has("data")) {
-        // biome-ignore lint/style/noNonNullAssertion: we know this will be defined
-        input = superjson.parse<SuperJSONObject>(url.searchParams.get("data")!);
+      if (url.searchParams.has("input")) {
+        input = superjson.parse<SuperJSONObject>(
+          // biome-ignore lint/style/noNonNullAssertion: we know this will be defined
+          url.searchParams.get("input")!,
+        );
       }
 
       const rendered = await handler({
