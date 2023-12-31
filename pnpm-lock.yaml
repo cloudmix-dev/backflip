@@ -38,15 +38,18 @@ importers:
 
   examples/expo:
     dependencies:
+      '@backflipjs/client':
+        specifier: workspace:~0.0.4
+        version: link:../../packages/client
       '@backflipjs/native':
-        specifier: ~0.0.4
-        version: 0.0.4(expo@50.0.0-preview.4)
+        specifier: workspace:~0.0.4
+        version: link:../../packages/native
       '@backflipjs/react':
-        specifier: ~0.0.4
-        version: 0.0.4(react-dom@18.2.0)(react@18.2.0)
+        specifier: workspace:~0.0.4
+        version: link:../../packages/react
       '@backflipjs/server':
-        specifier: ~0.0.4
-        version: 0.0.4
+        specifier: workspace:~0.0.4
+        version: link:../../packages/server
       expo:
         specifier: ~50.0.0-preview.4
         version: 50.0.0-preview.4(@babel/core@7.20.12)(@react-native/babel-preset@0.74.0)(expo-module-scripts@3.4.0)
@@ -97,17 +100,17 @@ importers:
   examples/remix:
     dependencies:
       '@backflipjs/browser':
-        specifier: ~0.0.4
-        version: 0.0.4
+        specifier: workspace:~0.0.4
+        version: link:../../packages/browser
       '@backflipjs/client':
-        specifier: ~0.0.4
-        version: 0.0.4
+        specifier: workspace:~0.0.4
+        version: link:../../packages/client
       '@backflipjs/react':
-        specifier: ~0.0.4
-        version: 0.0.4(react-dom@18.2.0)(react@18.2.0)
+        specifier: workspace:~0.0.4
+        version: link:../../packages/react
       '@backflipjs/server':
-        specifier: ~0.0.4
-        version: 0.0.4
+        specifier: workspace:~0.0.4
+        version: link:../../packages/server
       '@remix-run/node':
         specifier: ~2.3.1
         version: 2.3.1(typescript@5.3.3)
@@ -2148,47 +2151,6 @@ packages:
       '@babel/helper-string-parser': 7.23.4
       '@babel/helper-validator-identifier': 7.22.20
       to-fast-properties: 2.0.0
-
-  /@backflipjs/browser@0.0.4:
-    resolution: {integrity: sha512-pQnSht3+oZeWjgAfXCcYnc3Xi7gmOMZCkL8Y0Z9blp6lhXWb/ZG+rOS83ZI7APoXlA10lL6Cx0i/yDvR4eGWTg==}
-    engines: {node: '>=18.0.0'}
-    dependencies:
-      idb: 8.0.0
-    dev: false
-
-  /@backflipjs/client@0.0.4:
-    resolution: {integrity: sha512-oi4F/Cl8aJkHCUVyzLFge8D1nCyBQ2afe4LzyidSXeTJF3NSMY9EdmnWHyHrEtz8SUXFg1HZIZnSHSwxo9PWFQ==}
-    engines: {node: '>=18.0.0'}
-    dependencies:
-      superjson: 1.13.3
-    dev: false
-
-  /@backflipjs/native@0.0.4(expo@50.0.0-preview.4):
-    resolution: {integrity: sha512-dWGymY0qEd7v0HKT9hQH670tX+hLjHuf4Dxyp/v4Bqlvkxp5c0HCihWO2SzTQXIMRE8QKrixFFJPYCzCPCCNlA==}
-    engines: {node: '>=18.0.0'}
-    dependencies:
-      expo-secure-store: 12.5.0(expo@50.0.0-preview.4)
-    transitivePeerDependencies:
-      - expo
-    dev: false
-
-  /@backflipjs/react@0.0.4(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-uC2SD8iBB7lsLoYnwtDybdxx+x9Qcts+lfC4j+jodDJPtKvWV9gHSGC+FuxNl6xJnhsup1vDyLKxmueDQFaY9g==}
-    peerDependencies:
-      react: ~18.2.0
-      react-dom: ~18.2.0
-    dependencies:
-      idb: 8.0.0
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: false
-
-  /@backflipjs/server@0.0.4:
-    resolution: {integrity: sha512-8jUs9bbCLEBlHCyKCdxlLO/RX+oFmHYco0/FRMVqzIUbLIkCpVFbzTVs5uRZuFIeAj81H6hMENdvRjSrFLcrbA==}
-    engines: {node: '>=18.0.0'}
-    dependencies:
-      superjson: 1.13.3
-    dev: false
 
   /@bcoe/v8-coverage@0.2.3:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
@@ -10763,14 +10725,6 @@ packages:
       expo: '*'
     dependencies:
       expo: 49.0.21(@babel/core@7.20.12)
-    dev: false
-
-  /expo-secure-store@12.5.0(expo@50.0.0-preview.4):
-    resolution: {integrity: sha512-Ow2ei+SB1w4zPLxmOg2PVPf2i45Eii0T9KUaER5iRLJAMcBWN4nyGCxzESOoN3OrvxVadP0hAn6RVE1G3gdD+Q==}
-    peerDependencies:
-      expo: '*'
-    dependencies:
-      expo: 50.0.0-preview.4(@babel/core@7.20.12)(@react-native/babel-preset@0.74.0)(expo-module-scripts@3.4.0)
     dev: false
 
   /expo-splash-screen@0.26.0(expo-module-scripts@3.4.0)(expo-modules-autolinking@1.5.1)(expo@50.0.0-preview.4):

@@ -10,9 +10,10 @@
     "web": "expo start --web"
   },
   "dependencies": {
-    "@backflipjs/native": "~0.0.4",
-    "@backflipjs/react": "~0.0.4",
-    "@backflipjs/server": "~0.0.4",
+    "@backflipjs/client": "workspace:~0.0.4",
+    "@backflipjs/native": "workspace:~0.0.4",
+    "@backflipjs/react": "workspace:~0.0.4",
+    "@backflipjs/server": "workspace:~0.0.4",
     "expo": "~50.0.0-preview.4",
     "expo-constants": "~15.4.1",
     "expo-linking": "~6.2.1",
