@@ -1,0 +1,40 @@
+{
+  "name": "@backflipjs/svelte",
+  "version": "0.0.1",
+  "type": "module",
+  "svelte": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "svelte": "./dist/index.js"
+    }
+  },
+  "files": ["dist", "!dist/**/*.test.*", "!dist/**/*.spec.*"],
+  "sideEffects": false,
+  "scripts": {
+    "build": "pnpm run package",
+    "prepare": "pnpm run build",
+    "package": "svelte-package && publint"
+  },
+  "keywords": ["backflipjs", "svelte"],
+  "author": "samuel.laycock@cloudmix.dev",
+  "license": "MIT",
+  "devDependencies": {
+    "@backflipjs/client": "workspace:~0.0.6",
+    "@sveltejs/adapter-auto": "~3.0.0",
+    "@sveltejs/kit": "~2.0.0",
+    "@sveltejs/package": "~2.0.0",
+    "@sveltejs/vite-plugin-svelte": "~3.0.0",
+    "publint": "~0.1.9",
+    "svelte": "~4.2.7",
+    "svelte-check": "~3.6.0",
+    "tslib": "~2.4.1",
+    "typescript": "~5.0.0",
+    "vite": "~5.0.3"
+  },
+  "peerDependencies": {
+    "@backflipjs/client": "workspace:~0.0.6",
+    "svelte": "~4.0.0"
+  }
+}

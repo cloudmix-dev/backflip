@@ -16,22 +16,14 @@
       }
     }
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "sideEffects": false,
   "scripts": {
     "build": "vite build",
-    "prepare": "npm run build",
+    "prepare": "pnpm run build",
     "tsc": "tsc"
   },
-  "keywords": [
-    "backflipjs",
-    "native",
-    "react-native",
-    "ios",
-    "android"
-  ],
+  "keywords": ["backflipjs", "native", "react-native", "ios", "android"],
   "dependencies": {
     "expo-secure-store": "~12.5.0"
   },

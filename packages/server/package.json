@@ -16,19 +16,14 @@
       }
     }
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "sideEffects": false,
   "scripts": {
     "build": "vite build",
-    "prepare": "npm run build",
+    "prepare": "pnpm run build",
     "tsc": "tsc"
   },
-  "keywords": [
-    "backflipjs",
-    "server"
-  ],
+  "keywords": ["backflipjs", "server"],
   "engines": {
     "node": ">=18.0.0"
   },
