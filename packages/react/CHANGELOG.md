@@ -1,5 +1,11 @@
 # @backflipjs/react
 
+## 0.0.6
+
+### Patch Changes
+
+- 1b16a4e: Improve Server and Client types
+
 ## 0.0.5
 
 ## 0.0.4

@@ -1,6 +1,6 @@
 {
   "name": "@backflipjs/client",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "main": "./dist/index.cjs.js",
   "module": "./dist/index.es.mjs",
   "types": "./dist/index.d.ts",
@@ -32,7 +32,7 @@
   "author": "samuel.laycock@cloudmix.dev",
   "license": "MIT",
   "devDependencies": {
-    "@backflipjs/server": "workspace:~0.0.5",
+    "@backflipjs/server": "workspace:~0.0.6",
     "vite-plugin-dts": "~3.7.0"
   },
   "engines": {
