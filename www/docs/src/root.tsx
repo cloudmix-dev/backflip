@@ -1,4 +1,4 @@
-import { AppShell, ThemeSelector } from "@cloudmix-dev/react";
+import { AppShell, type Theme, ThemeSelector } from "@cloudmix-dev/react";
 import { type LoaderFunctionArgs, json } from "@remix-run/cloudflare";
 import {
   Links,
@@ -17,7 +17,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
   const cookies = cookie.parse(request.headers.get("Cookie") ?? "");
   const theme = cookies._theme ?? "system";
 
-  return json({ theme });
+  return json({ theme: theme as Theme });
 }
 
 export default function App() {
@@ -34,9 +34,12 @@ export default function App() {
       <body className="h-full w-full bg-neutral-50 text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100">
         <AppShell
           renderActions={
-            <ThemeSelector cookie="_theme" localStorageKey="theme" />
+            <ThemeSelector
+              cookie="_theme"
+              localStorageKey="theme"
+              defaultTheme={theme}
+            />
           }
-          test
         >
           <main className="flex-grow pb-6 md:pb-12">
             <div className="container m-auto px-4">

@@ -294,7 +294,7 @@ server.component("home", ({ ctx, resHeaders }) => {
       {
         component: "Text",
         props: {
-          content: \`From the server: your locale is \${ctx.locale}\`,
+          content: \`From the server: your locale is \${ctx.locale}\`, // Using \`ctx\` to send data to the client
         },
       },
     ],
@@ -375,33 +375,33 @@ const server = new Server<{ locale: string }>({
                 to serialise/deserialise data, so your <code>ctx</code> and{" "}
                 <code>props</code> definitions can include (as well as valid{" "}
                 <code>JSON</code> values):
-                <ul>
-                  <li>
-                    <code>undefined</code>
-                  </li>
-                  <li>
-                    <code>BigInt</code>
-                  </li>
-                  <li>
-                    <code>Date</code>
-                  </li>
-                  <li>
-                    <code>RegExp</code>
-                  </li>
-                  <li>
-                    <code>Set</code>
-                  </li>
-                  <li>
-                    <code>Map</code>
-                  </li>
-                  <li>
-                    <code>URL</code>
-                  </li>
-                  <li>
-                    <code>Error</code>
-                  </li>
-                </ul>
               </p>
+              <ul>
+                <li>
+                  <code>undefined</code>
+                </li>
+                <li>
+                  <code>BigInt</code>
+                </li>
+                <li>
+                  <code>Date</code>
+                </li>
+                <li>
+                  <code>RegExp</code>
+                </li>
+                <li>
+                  <code>Set</code>
+                </li>
+                <li>
+                  <code>Map</code>
+                </li>
+                <li>
+                  <code>URL</code>
+                </li>
+                <li>
+                  <code>Error</code>
+                </li>
+              </ul>
               <h3 id="registry">Registry</h3>
               <p>
                 The <code>Registry</code> is (typically) a{" "}
@@ -538,16 +538,16 @@ const client = new Client({
                 with a storage layer. The <code>@backflipjs/browser</code>{" "}
                 package provides two <code>Cache</code> implementations that
                 support persisted storage:
-                <ul>
-                  <li>
-                    <code>LocalStorageCache</code> (using the{" "}
-                    <code>localStorage</code> API)
-                  </li>
-                  <li>
-                    <code>IDBCache</code> (using <code>IndexedDB</code>)
-                  </li>
-                </ul>
               </p>
+              <ul>
+                <li>
+                  <code>LocalStorageCache</code> (using the{" "}
+                  <code>localStorage</code> API)
+                </li>
+                <li>
+                  <code>IDBCache</code> (using <code>IndexedDB</code>)
+                </li>
+              </ul>
               <Code
                 language="typescript"
                 content={`import { Client } from "@backflipjs/client";
@@ -667,8 +667,12 @@ const client = new Client({
             </section>
           </Prose>
         </article>
-        <div className="hidden p-6 rounded-lg border border-neutral-200 dark:border-neutral-800 lg:block lg:sticky lg:top-[0.5rem]">
-          <TableOfContents querySelector="article" />
+        <div className="w-96 hidden lg:block lg:sticky lg:top-[0.5rem]">
+          <TableOfContents
+            contentQuerySelector="article"
+            scrollQuerySelector="main > div"
+            scrollOffset={64}
+          />
         </div>
       </div>
     </>
