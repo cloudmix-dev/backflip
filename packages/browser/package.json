@@ -1,6 +1,6 @@
 {
   "name": "@backflipjs/browser",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "main": "./dist/index.cjs.js",
   "module": "./dist/index.es.mjs",
   "types": "./dist/index.d.ts",
@@ -35,7 +35,7 @@
     "idb": "~8.0.0"
   },
   "devDependencies": {
-    "@backflipjs/client": "workspace:~0.0.4",
+    "@backflipjs/client": "workspace:~0.0.5",
     "vite-plugin-dts": "~3.7.0"
   },
   "engines": {
