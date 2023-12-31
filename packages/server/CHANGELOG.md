@@ -1,5 +1,11 @@
 # @backflipjs/server
 
+## 0.0.5
+
+### Patch Changes
+
+- 1e48b18: Fix Server generic types
+
 ## 0.0.4
 
 ### Patch Changes
