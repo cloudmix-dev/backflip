@@ -2,7 +2,7 @@
   "name": "backflip",
   "private": true,
   "scripts": {
-    "publish": "changeset publish",
+    "publish": "changeset publish --access public",
     "version": "changeset version && pnpm i --fix-lockfile",
     "postinstall": "npx husky install"
   },
