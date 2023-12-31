@@ -31,7 +31,7 @@ jobs:
           cache: pnpm
       - name: Install dependencies
         run: pnpm i --frozen-lockfile
-      - name: Publish Storybook
+      - name: Publish Docs
         uses: cloudflare/wrangler-action@v3
         with:
           packageManager: pnpm
