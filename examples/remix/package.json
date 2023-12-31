@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@backflipjs/browser": "~0.0.4",
+    "@backflipjs/client": "~0.0.4",
     "@backflipjs/react": "~0.0.4",
     "@backflipjs/server": "~0.0.4",
     "@remix-run/node": "~2.3.1",

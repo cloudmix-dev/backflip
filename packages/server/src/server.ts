@@ -6,10 +6,9 @@ import { type RenderedComponentConfig, type SuperJSONObject } from "./types";
 
 export interface ServerOptions<
   C extends Record<string, unknown> = Record<string, unknown>,
+  RC extends Record<string, unknown> = Record<string, unknown>,
 > {
-  context?:
-    | C
-    | ((req: Request, reqCtx: Record<string, unknown>) => C | Promise<C>);
+  context?: C | ((req: Request, reqCtx: RC) => C | Promise<C>);
   permitRequest?: (req: Request) => boolean | Promise<boolean>;
   onError?: (error: Error) => Response | Promise<Response>;
 }
