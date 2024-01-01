@@ -6,15 +6,16 @@ import {
   type RenderedComponentConfig,
 } from "@backflipjs/client";
 
-import { getClient, setClient } from "./client.js";
-import { Registry, getRegistry, setRegistry } from "./registry.js";
+import RenderComponent from "./components/render-component.svelte";
+import { setClient } from "./utils/client.js";
+import { Registry } from "./utils/registry.js";
+import { setRegistry } from "./utils/registry.js";
 
 export {
   Client,
   ClientError,
   Registry,
-  getClient,
-  getRegistry,
+  RenderComponent,
   setClient,
   setRegistry,
   type ClientOptions,
