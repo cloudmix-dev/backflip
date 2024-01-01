@@ -217,8 +217,8 @@ importers:
   www/docs:
     dependencies:
       '@cloudflare/kv-asset-handler':
-        specifier: ~0.1.3
-        version: 0.1.3
+        specifier: ~0.3.0
+        version: 0.3.0
       '@cloudmix-dev/react':
         specifier: ~0.0.17
         version: 0.0.17(react-dom@18.2.0)(react@18.2.0)
@@ -2202,6 +2202,12 @@ packages:
     dependencies:
       mime: 3.0.0
     dev: true
+
+  /@cloudflare/kv-asset-handler@0.3.0:
+    resolution: {integrity: sha512-9CB/MKf/wdvbfkUdfrj+OkEwZ5b7rws0eogJ4293h+7b6KX5toPwym+VQKmILafNB9YiehqY0DlNrDcDhdWHSQ==}
+    dependencies:
+      mime: 3.0.0
+    dev: false
 
   /@cloudflare/workerd-darwin-64@1.20231030.0:
     resolution: {integrity: sha512-J4PQ9utPxLya9yHdMMx3AZeC5M/6FxcoYw6jo9jbDDFTy+a4Gslqf4Im9We3aeOEdPXa3tgQHVQOSelJSZLhIw==}
@@ -11795,7 +11801,6 @@ packages:
     resolution: {integrity: sha512-jSCU7/VB1loIWBZe14aEYHU/+1UMEHoaO7qxCOVJOw9GgH72VAWppxNcjU+x9a2k3GSIBXNKxXQFqRvvZ7vr3A==}
     engines: {node: '>=10.0.0'}
     hasBin: true
-    dev: true
 
   /mimic-fn@1.2.0:
     resolution: {integrity: sha512-jf84uxzwiuiIVKiOLpfYk7N46TSy8ubTonmneY9vrpHNAnp0QBt2BxWV9dO3/j+BoVAb+a5G6YDPW3M5HOdMWQ==}

@@ -11,7 +11,7 @@
     "tsc": "tsc"
   },
   "dependencies": {
-    "@cloudflare/kv-asset-handler": "~0.1.3",
+    "@cloudflare/kv-asset-handler": "~0.3.0",
     "@cloudmix-dev/react": "~0.0.17",
     "@remix-run/cloudflare": "~2.4.1",
     "@remix-run/css-bundle": "~2.4.1",
