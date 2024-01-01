@@ -3,7 +3,7 @@ import { useMemo } from "react";
 
 import { Context } from "../contexts/context";
 
-interface ProviderProps {
+export interface ProviderProps extends React.PropsWithChildren {
   client: Client;
   devMode?: boolean;
   registry: Registry;
@@ -14,7 +14,7 @@ export function Provider({
   client,
   devMode,
   registry,
-}: React.PropsWithChildren<ProviderProps>) {
+}: ProviderProps) {
   const context = useMemo(
     () => ({
       client,

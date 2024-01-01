@@ -1,9 +1,9 @@
-import * as React from "react";
+import { useContext as baseUseContext } from "react";
 
 import { Context } from "../contexts/context";
 
 export function useContext() {
-  const context = React.useContext(Context);
+  const context = baseUseContext(Context);
 
   if (!context) {
     throw new Error("BackflipContext is not defined");

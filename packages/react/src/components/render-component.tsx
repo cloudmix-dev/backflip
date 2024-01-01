@@ -3,10 +3,10 @@ import {
   type SuperJSONObject,
 } from "@backflipjs/client";
 
-import { useContentData } from "../hooks/use-content-data";
+import { useComponentData } from "../hooks/use-component-data";
 import { RenderBlock } from "./render-block";
 
-interface RenderContentProps {
+export interface RenderContentProps {
   name: string;
   default?: RenderedComponentConfig;
   error?: React.ReactNode | React.ReactNode[];
@@ -23,7 +23,7 @@ export function RenderComponent({
   fallback: renderFallback,
   loading: renderLoading,
 }: RenderContentProps) {
-  const { data: contentData, loading, error } = useContentData(name, input);
+  const { data: contentData, loading, error } = useComponentData(name, input);
 
   if (loading) {
     if (renderLoading) {

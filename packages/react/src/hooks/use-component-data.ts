@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 
 import { useContext } from "./use-context";
 
-export function useContentData(name: string, data?: SuperJSONObject) {
+export function useComponentData(name: string, data?: SuperJSONObject) {
   const [loading, setLoading] = useState(true);
   const [contentData, setContentData] =
     useState<RenderedComponentConfig | null>(null);
