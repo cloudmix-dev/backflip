@@ -13,18 +13,18 @@
     "@backflipjs/client": "workspace:~0.0.6",
     "@backflipjs/react": "workspace:~0.0.6",
     "@backflipjs/server": "workspace:~0.0.6",
-    "@remix-run/node": "~2.3.1",
-    "@remix-run/react": "~2.3.1",
+    "@remix-run/node": "~2.4.1",
+    "@remix-run/react": "~2.4.1",
     "@remix-run/serve": "~2.3.1",
-    "isbot": "~3.7.1",
+    "isbot": "~4.1.0",
     "react": "~18.2.0",
     "react-dom": "~18.2.0"
   },
   "devDependencies": {
-    "@remix-run/dev": "~2.3.1",
-    "@types/react": "~18.2.20",
-    "@types/react-dom": "~18.2.7",
-    "tailwindcss": "~3.3.6"
+    "@remix-run/dev": "~2.4.1",
+    "@types/react": "~18.2.46",
+    "@types/react-dom": "~18.2.18",
+    "tailwindcss": "~3.4.0"
   },
   "engines": {
     "node": ">=18.0.0"
