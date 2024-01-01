@@ -1,0 +1,592 @@
+---
+meta:
+  - title: Server-Driven UIs | Backflip
+  - name: description
+    content: Backflip - Simple server-driven UI primitives
+---
+
+import { Code } from "@cloudmix-dev/react";
+
+## Getting started
+
+At a minimum, you need to install the `@backflipjs/client` and
+`@backflipjs/server` packages:
+
+<Code
+  language="bash"
+  content="npm install @backflipjs/client @backflipjs/server"
+/>
+
+Depending on which front-end framework you are using, you may also want to
+install the dedicated `@backflipjs/<framework>` package as well (see
+[Frameworks](#frameworks"))
+
+### Server
+
+In your server code, create a `Server` instance...
+
+<Code
+  language="typescript"
+  content={`import { Server } from "@backflipjs/server";
+
+const server = new Server();
+
+//...`}
+  copy
+/>
+
+...then you can register your `components`.
+
+<Code
+  language="typescript"
+  content={`//...
+
+server.component("example", () => ({
+  component: "Text",
+  props: {
+    content: "This is an example text component",
+  },
+}));
+
+//...`}
+  copy
+/>
+
+The return type for a `component()` callback is as follows:
+
+<Code
+  language="typescript"
+  content={`interface RenderedComponentConfig {
+  component: string;
+  props?: Record<string, unknown>;
+  children?: RenderedComponentConfig[];
+}`}
+  copy
+/>
+
+The `Server` instance exposes a
+<a href="https://wintercg.org/" target="_blank" rel="noreferrer">WinterCG</a>
+compatible `fetch()` method that accepts a `Request` and returns a `Response`.
+
+<Code
+  language="typescript"
+  content={`//...
+  
+// For example, in a Cloudflare Worker...
+export default {
+  fetch: server.fetch.bind(server),
+};`}
+  copy
+/>
+
+### Client
+
+In your client, you need to create a `Registry` instance...
+
+<Code
+  language="typescript"
+  content={`import { Registry } from "@backflipjs/client";
+  
+const registry = new Registry();
+
+//...`}
+  copy
+/>
+
+...you can then register each component you'd like available to be configured
+via the server.
+
+<Code
+  language="typescript"
+  content={`//...
+
+// \`Text\` is the component, for example a React component...
+registry.registerComponent(Text, { name: "Text" });
+
+//...`}
+  copy
+/>
+
+You also need to create a `Client` instance configured to point to your server.
+
+<Code
+  language="typescript"
+  content={`import { Client } from "@backflipjs/client";
+  
+const client = new Client({
+  url: "/api/components", // Could also be an absolute URL
+});
+
+//...`}
+  copy
+/>
+
+This `Client` can be used to send requests for a particular `component`
+configuration from your server.
+
+<Code
+  language="typescript"
+  content={`//...
+  
+const config = await client.send("example");
+
+//...`}
+  copy
+/>
+
+The return value for `send()` is the same as the one defined in the
+`component()` callback on the server, which can then be used to render the
+`example` component appropriately.
+
+<Code
+  language="typescript"
+  content={`//...
+
+function RenderComponent({
+  component,
+  props = {},
+  children,
+}: RenderComponentProps) {
+  const Component = registry.get(component);
+
+  if (!Component) {
+    return null;
+  }
+
+  return (
+    <Component {...props}>
+      {children?.map((child, i) => (
+        <RenderComponent key={\`\${component}_\${child.component}_\${i}\`} {...child} />
+      ))}
+    </Component>
+  );
+}
+
+//...
+
+return <RenderComponent {...config} />;
+
+//...`}
+  copy
+/>
+
+---
+
+## How it works
+
+### Server
+
+The server-side of *Backflip* provides the configuration to your front-end for
+how your components should be rendered. You can do anything you are accustomed
+to running on your back-end (e.g. database calls) to decide which configuration
+to send down to your client.
+
+You register components with your `Server` instance, which then exposes them via
+its REST API.
+
+<Code
+  language="typescript"
+  content={`import { Server } from "@backflipjs/server";
+
+interface ServerContext {
+  locale: string;
+}
+
+const server = new Server<ServerContext>();
+
+interface HomeInput {
+  buttonVariant?: "primary" | "secondary";
+}
+
+server.component<HomeInput>("home", ({ ctx, input, resHeaders }) => {
+  // Read a value from the \`input\` object
+  const { buttonVariant } = input;
+  // Run a convoluted "A/B" test
+  const ab = Math.random() > 0.5 ? 1 : 0;
+
+  // Setting a "Cache-Control" header instructs the Client how to cache the 
+  // response (if a Cache has been configured)
+  resHeaders.set("Cache-Control", "public, max-age=60");
+
+  return {
+    component: "Container",
+    children: [
+      {
+        component: "Text",
+        props: {
+          content: ab
+            ? "You are in the A group"
+            : "You are in the B group",
+        },
+      },
+      {
+        component: "Button",
+        props: {
+          label: \`\${buttonVariant} button\`,
+          variant: buttonVariant,
+        },
+      },
+      {
+        component: "DateTime",
+        props: {
+          date: new Date(), // SuperJSON allows us to send some more complex data types
+          prefix: "It is now",
+        },
+      },
+      {
+        component: "Text",
+        props: {
+          content: \`From the server: your locale is \${ctx.locale}\`, // Using \`ctx\` to send data to the client
+        },
+      },
+    ],
+  };
+});
+
+export { server };`}
+  copy
+/>
+
+The `Server` exposes a
+<a href="https://wintercg.org/" target="_blank" rel="noreferrer">WinterCG</a>
+compatible `fetch()` method that you can use to route requests to your `Server`.
+
+<Code
+  language="typescript"
+  content={`import { Hono } from "hono";
+import { server } from "./server";
+
+const app = new Hono();
+
+app.get("/api/components/:component", (c) => server.fetch(c.req.raw));
+
+export default app;`}
+  copy
+/>
+
+The only requirements for how you route your `Server` are that it is exposed via
+a `GET` endpoint, and that the URL's **last** path parameter is the `component`
+`name`. Apart from that, you can customise your setup as you see fit.
+
+### Input
+
+A `Client` can pass some `input` to the `Server` when requesting a `component`,
+which can then be used in the `component()` callback.
+
+### Context
+
+The `component()` method provides a `ctx` object that you can use within your
+callback to un isolated logic per request.
+
+The values in `ctx` can come from  **both** the back-end and the front-end,
+allowing your client to provide extra information per request.
+
+`ctx` is defined on the back-end as either an `object` or `function` that
+returns one:
+
+<Code
+  language="typescript"
+  content={`import { Server } from "@backflipjs/server";
+
+interface ServerContext {
+  locale: string;
+}
+
+const server = new Server<ServerContext>({
+  // \`reqCtx\` is the incoming request context object
+  context: (req, reqCtx) => ({ locale: reqCtx.locale ?? "en-US" }),
+});
+
+//...`}
+  copy
+/>
+
+#### Serialization
+
+The `Server` uses
+<a href="https://www.npmjs.com/package/superjson" target="_blank" rel="noreferrer">SuperJSON</a>
+to serialise/deserialise data, so your `input`, `ctx` and `props` definitions
+can include (as well as valid `JSON` values):
+
+- `undefined`
+- `BigInt`
+- `Date`
+- `RegExp`
+- `URL`
+- `Set`
+- `Map`
+- `Error`
+
+### Registry
+
+The `Registry` is (typically) a **singleton** you provide to your front-end
+logic which maps your components to the component `names` that your back-end
+describes when you request `components`.
+
+<Code
+  language="typescript"
+  content={`import { Registry } from "@backflipjs/client";
+import { Text } from "./components";
+  
+const registry = new Registry();
+
+registry.registerComponent(Text, { name: "Text" });
+
+//...`}
+  copy
+/>
+
+`components` can then be retrieved via their `name`.
+
+<Code
+  language="typescript"
+  content={`//...
+
+const TextComponent = registry.get("Text");
+
+//...`}
+  copy
+/>
+
+If you call `get()` with a `name` that **doesn't** have a component registered
+to it, it will return `null`.
+
+`names` are **unique** values, so you can only register **one** `component` per
+`name`.
+
+### Components
+
+A `component` is any atomic UI presentation that can be described via the
+following configuration:
+
+<Code
+  language="typescript"
+  content={`interface RenderedComponentConfig {
+  component: string;
+  props?: Record<string, unknown>;
+  children?: RenderedComponentConfig[];
+}`}
+  copy
+/>
+
+*How* the configuration of a `component` translates to how it is rendered is an
+**implemetation** detail that the core *Backflip* libraries are agnostic to
+(although we do have [framework specific](#frameworks) libraries that **do**
+handle the rendering of your `components` as well).
+
+A `component` is registered with a **unique** `name`, which is how the `Server`
+refers to it.
+
+### Client
+
+The `Client` makes requests to your back-end from your front-end code, to
+retreive your `component` configurations.
+
+<Code
+  language="typescript"
+  content={`import { Cache, Client } from "@backflipjs/client";
+        
+const client = new Client({
+  url: "/api/components", // The URL your \`Server\` is available at
+  cache: new Cache(), // *Optional* \`Cache\` instance to support front-end caching
+  context: () => ({ // *Optional* \`ctx\` to send to the server per request
+    locale: Intl.DateTimeFormat().resolvedOptions().locale,
+  }),
+});
+  
+
+//...`}
+  copy
+/>
+
+The `Client` exposes a `send()` method that accepts a `name` and returns a
+`Promise` that resolves to the `component` configuration. If a request fails,
+an `Error` will be thrown.
+
+If provided, the `context` will be serialized and sent within the query
+parameters of the request.
+
+### Cache
+
+By default, every time your front-end renders your `components`, the `Client`
+will make a network request to get their configuration(s).
+
+While ensuring your configurations include fresh data is desirable in many
+situations, there will also likely be `components` whose configuration rarely
+change - in these cases, you can utilize a `Cache`.
+
+<Code
+  language="typescript"
+  content={`import { Cache, Client } from "@backflipjs/client";
+
+const client = new Client({
+  //...
+  cache: new Cache(), // Simple default in-memory cache
+  //...
+});
+
+//...`}
+  copy
+/>
+
+The default `Cache` provided is an **in-memory** one - if you would like
+persistance between sessions then you need to utilize a `Cache` with a storage
+layer. The `@backflipjs/browser` package provides two `Cache` implementations
+that support persisted storage:
+
+- `LocalStorageCache` (using the `localStorage` API)
+- `IDBCache` (using `IndexedDB`)
+
+<Code
+  language="typescript"
+  content={`import { Client } from "@backflipjs/client";
+import { IDBCache } from "@backflipjs/browser";
+
+const client = new Client({
+  //...
+  cache: new IDBCache(),
+  //...
+});
+
+//...`}
+  copy
+/>
+
+For *React Native* caching [see below](#react-native).
+
+---
+
+## Frameworks
+
+### React
+
+Install the `@backflipjs/react` package along with the other dependencies
+
+<Code
+  language="bash"
+  content="npm install @backflipjs/client @backflipjs/server @backflipjs/react"
+/>
+
+In your front-end code, you need to create a `Registry` and `Client` and pass
+them into the `Provider` component.
+
+<Code
+  language="typescript"
+  content={`import { Client, Registry, Provider } from "@backflipjs/react";
+    
+const registry = new Registry();
+const client = new Client({ /* ... */ });
+
+// ...
+
+function App() {
+  return (
+    <Provider client={client} registry={registry} devMode>
+      {/* ... */}
+    </Provider>
+  )
+}
+
+//...`}
+  copy
+/>
+
+The `devMode` prop optionally turns development mode **on** when `true`, which
+will log out warnings when for various misconfigurations that can occurr as you
+develop your application with *Backflip*.
+
+To render your components, you can use the `RenderComponent` component:
+
+<Code
+  language="typescript"
+  content={`import { RenderComponent } from "@backflipjs/react";
+
+// ...
+
+return <RenderComponent name="example" />;
+
+//...`}
+  copy
+/>
+
+As well as the mandatory `name` prop, you can also pass the following *optional*
+props:
+
+- `default` (a default configuration to use if the request to the `Server`
+  fails)
+- `error` (a *React* component to render if  the component fails to render due
+  to an error - typically from the `Server`)
+- `fallback` (a *React* component to render if the component fails to render for
+  any reason)
+- `input` (an `input` value to be passed to the `Server` when processing the
+  request)
+- `loading` (a *React* component to render while the component is loading a
+  request from the `Server`)
+
+<Code
+  language="typescript"
+  content={`import { RenderComponent } from "@backflipjs/react";
+
+// ...
+
+return (
+  <RenderComponent
+    name="example"
+    default={{
+      component: "Text",
+      props: {
+        content: "This is a default text component",
+      },
+    }}
+    error={<p>There was an error rendering this component</p>}
+    fallback={<p>This component is not available</p>}
+    input={{ buttonVariant: "primary" }}
+    loading={<p>Loading...</p>}
+  />
+);
+
+//...`}
+  copy
+/>
+
+An example *React* *Remix* application can be found in the
+<a href="https://github.com/cloudmix-dev/backflip/tree/main/examples/remix" target="_blank" rel="noreferrer">Github repository</a>.
+
+### React Native
+
+*React Native* can also utilize the `@backflipjs/react` dependency. For the most
+part, you can follow the above [React](#react) instructions to set it up.
+
+There is a `@backflipjs/native` package that provides a *React Native* *Expo*
+compatible `SecureStoreCache` that uses `expo-secure-store` as a cache storager
+layer.
+
+<Code
+  language="typescript"
+  content={`import { SecureStoreCache } from "@backflipjs/native";
+import { Client } from "@backflipjs/react";
+
+const client = new Client({
+  //...
+  cache: new SecureStoreCache(),
+  //...
+});
+
+//...`}
+  copy
+/>
+
+An example *Expo* application can be found in the
+<a href="https://github.com/cloudmix-dev/backflip/tree/main/examples/expo" target="_blank" rel="noreferrer">Github repository</a>.
+
+### Vue
+
+Coming soon...
+
+### Svelte
+
+Coming soon...
+
+### SolidJS
+
+Coming soon...
