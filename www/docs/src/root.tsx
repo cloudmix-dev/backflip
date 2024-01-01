@@ -36,7 +36,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className="h-full w-full bg-neutral-50 text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100">
+      <body className="h-full w-full bg-neutral-50 bg-gradient-to-br from-neutral-50 via-neutral-50 via-75% to-brand-100 text-neutral-900 dark:bg-neutral-950 dark:from-neutral-950 dark:via-neutral-950 dark:to-brand-950 dark:text-neutral-100">
         <AppShell
           renderActions={
             <>
