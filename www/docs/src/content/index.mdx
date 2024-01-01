@@ -7,6 +7,20 @@ meta:
 
 import { Code } from "@cloudmix-dev/react";
 
+## What is Backflip?
+
+*Backflip* is a set of libraries that allow you to build **server-driven UIs**
+(heavily inspired by
+<a href="https://www.builder.io/blog/ui-over-apis" target="_blank"  rel="noreferrer">this blog post</a>).
+Server-driven UIs allow your back-end to provide the configuration for how your
+UI should be rendered, even on [native](#react-native) platforms.
+
+*Backflip* allows you to support this pattern in your front-end code, while
+still allowing you to use your front-end [framework](#frameworks) of choice. It
+also provides fallback behaviour(s), as well as on-device [caching](#cache), to
+ensure that your UI is always available to your users, even when they are
+offline.
+
 ## Getting started
 
 At a minimum, you need to install the `@backflipjs/client` and
