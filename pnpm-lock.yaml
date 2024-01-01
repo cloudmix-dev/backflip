@@ -112,8 +112,8 @@ importers:
         specifier: workspace:~0.0.6
         version: link:../../packages/server
       '@remix-run/node':
-        specifier: ~2.3.1
-        version: 2.3.1(typescript@5.3.3)
+        specifier: ~2.4.1
+        version: 2.4.1(typescript@5.3.3)
       '@remix-run/react':
         specifier: ~2.4.1
         version: 2.4.1(react-dom@18.2.0)(react@18.2.0)(typescript@5.3.3)
@@ -6323,7 +6323,6 @@ packages:
       source-map-support: 0.5.21
       stream-slice: 0.1.2
       typescript: 5.3.3
-    dev: true
 
   /@remix-run/react@2.4.1(react-dom@18.2.0)(react@18.2.0)(typescript@5.3.3):
     resolution: {integrity: sha512-6qfLpijD96fKd276/MOtarf/SkFmWDKXTXzpMQzYTiRXofUDezRGG3VqbkopD1O+jl4BjTuKQvI+7YfLcfGx8w==}
