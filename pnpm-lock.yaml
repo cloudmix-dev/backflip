@@ -225,12 +225,12 @@ importers:
       '@remix-run/cloudflare':
         specifier: ~2.4.1
         version: 2.4.1(@cloudflare/workers-types@4.20231218.0)(typescript@5.3.3)
-      '@remix-run/css-bundle':
-        specifier: ~2.4.1
-        version: 2.4.1
       '@remix-run/react':
         specifier: ~2.4.1
         version: 2.4.1(react-dom@18.2.0)(react@18.2.0)(typescript@5.3.3)
+      '@remix-run/server-runtime':
+        specifier: ~2.4.1
+        version: 2.4.1(typescript@5.3.3)
       cookie:
         specifier: ~0.6.0
         version: 0.6.0
@@ -6078,11 +6078,6 @@ packages:
       '@cloudflare/workers-types': 4.20231218.0
       '@remix-run/server-runtime': 2.4.1(typescript@5.3.3)
       typescript: 5.3.3
-    dev: false
-
-  /@remix-run/css-bundle@2.4.1:
-    resolution: {integrity: sha512-+Gl/bj8yfkVAlimbZZnTgzrrQJgnhV2xNNGc0lMXekEiDobk7DTTyonAXqrkxaRYGvMhBVwMaaDKWUE1iy4fHg==}
-    engines: {node: '>=18.0.0'}
     dev: false
 
   /@remix-run/dev@2.4.1(@remix-run/serve@2.3.1)(@types/node@18.19.4)(typescript@5.3.3)(vite@5.0.10):
