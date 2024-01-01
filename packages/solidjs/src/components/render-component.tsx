@@ -2,6 +2,7 @@ import {
   type RenderedComponentConfig,
   type SuperJSONObject,
 } from "@backflipjs/client";
+import { type JSX } from "solid-js";
 
 import { useComponentData } from "../hooks/use-component-data";
 import { RenderBlock } from "./render-block";
@@ -9,10 +10,10 @@ import { RenderBlock } from "./render-block";
 export interface RenderContentProps {
   name: string;
   default?: RenderedComponentConfig;
-  error?: React.ReactNode | React.ReactNode[];
-  fallback?: React.ReactNode | React.ReactNode[];
+  error?: JSX.Element;
+  fallback?: JSX.Element;
   input?: SuperJSONObject;
-  loading?: React.ReactNode | React.ReactNode[];
+  loading?: JSX.Element;
 }
 
 export function RenderComponent({
