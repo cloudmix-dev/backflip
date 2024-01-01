@@ -16,40 +16,40 @@ export interface RenderContentProps {
   loading?: JSX.Element;
 }
 
-export function RenderComponent({
-  name,
-  default: defaultData,
-  error: renderError,
-  input,
-  fallback: renderFallback,
-  loading: renderLoading,
-}: RenderContentProps) {
-  const { data: contentData, loading, error } = useComponentData(name, input);
+export function RenderComponent(props: RenderContentProps) {
+  const {
+    data: componentData,
+    loading: isLoading,
+    error: hasError,
+  } = useComponentData(props.name, props.input);
+  const data = componentData();
+  const loading = isLoading();
+  const error = hasError();
 
-  if (loading()) {
-    if (renderLoading) {
-      return <>{renderLoading}</>;
+  if (loading) {
+    if (props.loading) {
+      return <>{props.loading}</>;
     }
 
     return null;
   }
 
-  if (error() && renderError) {
-    return <>{renderError}</>;
+  if (error && props.error) {
+    return <>{props.error}</>;
   }
 
-  if (!contentData && !loading) {
-    if (defaultData) {
-      return <RenderBlock {...defaultData} />;
+  if (!data && !loading) {
+    if (props.default) {
+      return <RenderBlock {...props.default} />;
     }
 
-    if (renderFallback) {
-      return <>{renderFallback}</>;
+    if (props.fallback) {
+      return <>{props.fallback}</>;
     }
 
     return null;
   }
 
   // biome-ignore lint/style/noNonNullAssertion: we know contentData is defined
-  return <RenderBlock {...contentData()!} />;
+  return <RenderBlock {...data!} />;
 }

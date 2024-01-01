@@ -10,17 +10,15 @@ export interface ProviderProps {
   registry: Registry;
 }
 
-export function Provider({
-  children,
-  client,
-  devMode,
-  registry,
-}: ProviderProps) {
-  const [context] = createSignal({ client, registry });
+export function Provider(props: ProviderProps) {
+  const [context] = createSignal({
+    client: props.client,
+    registry: props.registry,
+  });
 
-  if (devMode) {
-    registry.setDevMode(devMode);
+  if (props.devMode) {
+    props.registry.setDevMode(props.devMode);
   }
 
-  return <Context.Provider value={context}>{children}</Context.Provider>;
+  return <Context.Provider value={context}>{props.children}</Context.Provider>;
 }

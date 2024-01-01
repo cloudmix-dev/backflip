@@ -12,26 +12,16 @@ export function useComponentData(name: string, data?: SuperJSONObject) {
     createSignal<RenderedComponentConfig | null>(null);
   const [error, setError] = createSignal<Error | null>(null);
   const context = useContext();
-  const skip = typeof window === "undefined";
 
   createEffect(() => {
-    if (!skip) {
-      const ac = new AbortController();
-      const signal = ac.signal;
+    const { client } = context?.() ?? {};
 
+    if (client) {
       (async () => {
         setLoading(true);
 
         try {
-          const { client } = context?.() ?? {};
-
-          if (!client) {
-            throw new Error(
-              "No Client provided - ensure you have wrapped this component in a <Provider />",
-            );
-          }
-
-          const newContentData = await client.send(name, data, { signal });
+          const newContentData = await client.send(name, data);
 
           setContentData(newContentData);
           setLoading(false);
@@ -43,10 +33,6 @@ export function useComponentData(name: string, data?: SuperJSONObject) {
           }
         }
       })();
-
-      return () => {
-        ac.abort();
-      };
     }
   });
 
