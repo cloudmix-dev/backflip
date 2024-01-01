@@ -1,0 +1,29 @@
+{
+  "name": "@backflipjs/example-solid-start",
+  "private": true,
+  "sideEffects": false,
+  "type": "module",
+  "scripts": {
+    "dev": "vinxi dev",
+    "build": "vinxi build",
+    "start": "vinxi start"
+  },
+  "dependencies": {
+    "@backflipjs/browser": "workspace:~0.0.6",
+    "@backflipjs/client": "workspace:~0.0.6",
+    "@backflipjs/server": "workspace:~0.0.6",
+    "@backflipjs/solidjs": "workspace:~0.0.0",
+    "@solidjs/router": "~0.10.5",
+    "@solidjs/start": "~0.4.2",
+    "solid-js": "~1.8.7",
+    "vinxi": "0.0.59"
+  },
+  "devDependencies": {
+    "autoprefixer": "~10.4.16",
+    "postcss": "~8.4.32",
+    "tailwindcss": "~3.4.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
