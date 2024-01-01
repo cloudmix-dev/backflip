@@ -283,8 +283,8 @@ server.component<HomeInput>("home", ({ ctx, input, resHeaders }) => {
         component: "Text",
         props: {
           content: ab
-            ? "Below is a primary button"
-            : "Below is a secondary button",
+            ? "You are in the A group"
+            : "You are in the B group",
         },
       },
       {
