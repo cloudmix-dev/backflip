@@ -16,26 +16,21 @@
       }
     }
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "sideEffects": false,
   "scripts": {
     "build": "vite build",
     "prepare": "npm run build",
     "tsc": "tsc"
   },
-  "keywords": [
-    "backflipjs",
-    "server"
-  ],
-  "engines": {
-    "node": ">=18.0.0"
-  },
+  "keywords": ["backflipjs", "server"],
   "dependencies": {
     "superjson": "~2.2.1"
   },
   "devDependencies": {
     "vite-plugin-dts": "~3.7.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }

@@ -16,19 +16,14 @@
       }
     }
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "sideEffects": false,
   "scripts": {
     "build": "vite build",
     "prepare": "npm run build",
     "tsc": "tsc"
   },
-  "keywords": [
-    "backflipjs",
-    "react"
-  ],
+  "keywords": ["backflipjs", "react"],
   "dependencies": {
     "idb": "~8.0.0"
   },
@@ -41,5 +36,8 @@
   },
   "peerDependencies": {
     "react": "~18.2.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }

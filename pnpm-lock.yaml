@@ -442,7 +442,7 @@ packages:
     resolution: {integrity: sha512-0NFvs3VkuSYbFi1x2Vd6tKrywq+z/cLeYC/RJNFrIX/30Bf5aiGYbtvGXolEktzJH8o5E5KJ3tT+nkxuuZFVlA==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      '@babel/types': 7.23.6
+      '@babel/types': 7.19.0
     dev: false
 
   /@babel/helper-module-imports@7.22.15:
@@ -3326,7 +3326,7 @@ packages:
       getenv: 1.0.0
       glob: 7.1.6
       resolve-from: 5.0.0
-      semver: 7.5.4
+      semver: 7.5.3
       slash: 3.0.0
       xcode: 3.0.1
       xml2js: 0.6.0
@@ -3408,7 +3408,7 @@ packages:
       '@expo/bunyan': 4.0.0
       '@expo/metro-config': 0.10.7
       '@expo/osascript': 2.0.33
-      '@expo/spawn-async': 1.7.2
+      '@expo/spawn-async': 1.5.0
       body-parser: 1.20.2
       chalk: 4.1.2
       connect: 3.7.0
@@ -6566,7 +6566,7 @@ packages:
   /@types/mdast@4.0.3:
     resolution: {integrity: sha512-LsjtqsyF+d2/yFOYaN22dHZI1Cpwkrj+g06G8+qtUKlhovPW89YhqSnfKtMbkgmEtYpH2gydRNULd6y8mciAFg==}
     dependencies:
-      '@types/unist': 2.0.10
+      '@types/unist': 3.0.2
     dev: true
 
   /@types/mdx@2.0.10:
