@@ -19,10 +19,10 @@ export default function Index() {
             <p>Simple server-driven UI primitives</p>
           </Prose>
           <div className="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-6">
-            <Button variant="primary">
+            <Button variant="primary" asChild>
               <Link to="#getting-started">Getting started</Link>
             </Button>
-            <Button>
+            <Button asChild>
               <Link to="#how-it-works">How it works</Link>
             </Button>
           </div>

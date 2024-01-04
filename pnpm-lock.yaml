@@ -220,8 +220,8 @@ importers:
         specifier: ~0.3.0
         version: 0.3.0
       '@cloudmix-dev/react':
-        specifier: ~0.0.17
-        version: 0.0.17(react-dom@18.2.0)(react@18.2.0)
+        specifier: ~0.0.18
+        version: 0.0.18(react-dom@18.2.0)(react@18.2.0)
       '@remix-run/cloudflare':
         specifier: ~2.4.1
         version: 2.4.1(@cloudflare/workers-types@4.20231218.0)(typescript@5.3.3)
@@ -248,8 +248,8 @@ importers:
         specifier: ~4.20231218.0
         version: 4.20231218.0
       '@cloudmix-dev/tailwind':
-        specifier: ~0.0.17
-        version: 0.0.17
+        specifier: ~0.0.18
+        version: 0.0.18
       '@mdx-js/rollup':
         specifier: ~3.0.0
         version: 3.0.0(rollup@4.9.2)
@@ -2104,8 +2104,8 @@ packages:
   /@cloudflare/workers-types@4.20231218.0:
     resolution: {integrity: sha512-Vs1FKjfUjXYGbCsXzkl+ITp0Iyb6QiW6+vTERTNThC+v96T0IvPVAioH4tT20rXwoxAfxh380mAaxYtTrJUNVg==}
 
-  /@cloudmix-dev/react@0.0.17(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-yx/E6sAW81GlDWi7X/WCCim2iromI8L0Wbzuq166dtrDGKnryRG+O4MPC5dmugBJrG8VLlo+ZPrH5kY9agGnMg==}
+  /@cloudmix-dev/react@0.0.18(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-LJRigTQUe8AQHJjnI+9vGeIn16BZT86fJz2eLA3A6Pog31D4QumHh4cSJuDaGHRmyL+IP4zjXewoDVzvrryM0g==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       react: ~18.2.0
@@ -2114,20 +2114,20 @@ packages:
       '@heroicons/react': 2.1.1(react@18.2.0)
       '@sindresorhus/slugify': 2.2.1
       class-variance-authority: 0.7.0
-      clsx: 2.0.1
+      clsx: 2.1.0
       prism-react-renderer: 2.3.1(react@18.2.0)
       prismjs: 1.29.0
       react: 18.2.0
       react-aria-components: 1.0.0(react-dom@18.2.0)(react@18.2.0)
       react-resizable-panels: 1.0.7(react-dom@18.2.0)(react@18.2.0)
-      sonner: 1.2.4(react-dom@18.2.0)(react@18.2.0)
+      sonner: 1.3.1(react-dom@18.2.0)(react@18.2.0)
       tailwind-merge: 2.2.0
     transitivePeerDependencies:
       - react-dom
     dev: false
 
-  /@cloudmix-dev/tailwind@0.0.17:
-    resolution: {integrity: sha512-5rjGxGVSMr/NepkIYiGh9s+M0Jiu5VRmSNV1XC7FeR28Hk5NYzZPXkvGIig/rmowOaL+0DVUGUQCoMJTx4LJmQ==}
+  /@cloudmix-dev/tailwind@0.0.18:
+    resolution: {integrity: sha512-HdCTQjHGtVS943TuaMzCWf3m8HvNE3cKCEdOjtXn7fzMQkLIrXkCs8ac3CWSXqwJ//l4w3xXedBDL5o8NCj5/g==}
     engines: {node: '>=18.0.0'}
     dependencies:
       '@tailwindcss/container-queries': 0.1.1(tailwindcss@3.4.0)
@@ -4377,7 +4377,7 @@ packages:
       '@react-aria/utils': 3.23.0(react@18.2.0)
       '@react-types/shared': 3.22.0(react@18.2.0)
       '@swc/helpers': 0.5.3
-      clsx: 2.0.1
+      clsx: 2.1.0
       react: 18.2.0
     dev: false
 
@@ -4879,7 +4879,7 @@ packages:
       '@react-stately/utils': 3.9.0(react@18.2.0)
       '@react-types/shared': 3.22.0(react@18.2.0)
       '@swc/helpers': 0.5.3
-      clsx: 2.0.1
+      clsx: 2.1.0
       react: 18.2.0
     dev: false
 
@@ -7759,8 +7759,8 @@ packages:
     engines: {node: '>=6'}
     dev: false
 
-  /clsx@2.0.1:
-    resolution: {integrity: sha512-PrYqtepbSWwrFmtHX0IHv3zUEbWn1psIqaIZyjB3b9wEGpRAkpyeKbCCCkCXJYiHZPjK7jckJvf2sEB/8VKPgQ==}
+  /clsx@2.1.0:
+    resolution: {integrity: sha512-m3iNNWpd9rl3jvvcBnu70ylMdrXt8Vlq4HYadnU5fwcOtvkSQWPmj7amUcDT2qYI7risszBjI5AUIUox9D16pg==}
     engines: {node: '>=6'}
     dev: false
 
@@ -13220,7 +13220,7 @@ packages:
       react: '>=16.0.0'
     dependencies:
       '@types/prismjs': 1.26.3
-      clsx: 2.0.1
+      clsx: 2.1.0
       react: 18.2.0
     dev: false
 
@@ -14423,8 +14423,8 @@ packages:
       yargs: 15.4.1
     dev: true
 
-  /sonner@1.2.4(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-WGLP2QQnomgewaCTsK7YWiLcy5n1Yj83vsL5cP4zHMmpSkmFsCYTpQKhlXJrPE5kzjwbqCkCFXcOpbKc4vaUaA==}
+  /sonner@1.3.1(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-+rOAO56b2eI3q5BtgljERSn2umRk63KFIvgb2ohbZ5X+Eb5u+a/7/0ZgswYqgBMg8dyl7n6OXd9KasA8QF9ToA==}
     peerDependencies:
       react: ^18.0.0
       react-dom: ^18.0.0

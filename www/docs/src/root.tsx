@@ -40,7 +40,7 @@ export default function App() {
         <AppShell
           renderActions={
             <>
-              <Button size="icon">
+              <Button size="icon" asChild>
                 <a
                   href="https://github.com/cloudmix-dev/backflip"
                   target="_blank"
