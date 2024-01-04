@@ -3,7 +3,7 @@ import { useMemo } from "react";
 
 import { Context } from "../contexts/context";
 
-interface ProviderProps {
+export interface ProviderProps {
   client: Client;
   devMode?: boolean;
   registry: Registry;
