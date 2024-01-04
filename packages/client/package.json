@@ -27,7 +27,7 @@
   "author": "samuel.laycock@cloudmix.dev",
   "license": "MIT",
   "dependencies": {
-    "superjson": "~2.2.1"
+    "superjson": "1.13.3"
   },
   "devDependencies": {
     "@backflipjs/server": "workspace:~0.0.6",

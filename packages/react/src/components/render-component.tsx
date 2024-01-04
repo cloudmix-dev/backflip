@@ -3,10 +3,12 @@ import {
   type SuperJSONObject,
 } from "@backflipjs/client";
 
+import { useMemo, useState } from "react";
+import { SlotContext } from "../contexts/slot";
 import { useContentData } from "../hooks/use-content-data";
 import { RenderBlock } from "./render-block";
 
-interface RenderContentProps {
+export interface RenderContentProps extends React.PropsWithChildren {
   name: string;
   default?: RenderedComponentConfig;
   error?: React.ReactNode | React.ReactNode[];
@@ -16,6 +18,7 @@ interface RenderContentProps {
 }
 
 export function RenderComponent({
+  children,
   name,
   default: defaultData,
   error: renderError,
@@ -24,31 +27,51 @@ export function RenderComponent({
   loading: renderLoading,
 }: RenderContentProps) {
   const { data: contentData, loading, error } = useContentData(name, input);
+  const [slots, setSlot] = useState<
+    Record<string, React.ReactNode | React.ReactNode[]>
+  >({});
+  const slotContext = useMemo(
+    () => ({
+      slots,
+      setSlot: (
+        name: string,
+        children: React.ReactNode | React.ReactNode[],
+      ) => {
+        setSlot((prev) => ({ ...prev, [name]: children }));
+      },
+    }),
+    [slots],
+  );
+  let toRender: React.ReactNode = null;
 
   if (loading) {
     if (renderLoading) {
-      return <>{renderLoading}</>;
+      toRender = renderLoading;
     }
-
-    return null;
-  }
-
-  if (error && renderError) {
-    return <>{renderError}</>;
-  }
-
-  if (!contentData && !loading) {
+  } else if (error && renderError) {
+    toRender = renderError;
+  } else if (!contentData && !loading) {
     if (defaultData) {
-      return <RenderBlock {...defaultData} />;
+      toRender = (
+        <>
+          {children}
+          <RenderBlock {...defaultData} />
+        </>
+      );
+    } else if (renderFallback) {
+      toRender = renderFallback;
     }
-
-    if (renderFallback) {
-      return <>{renderFallback}</>;
-    }
-
-    return null;
+  } else {
+    toRender = (
+      <>
+        {children}
+        {/* biome-ignore lint/style/noNonNullAssertion: we know contentData is defined */}
+        <RenderBlock {...contentData!} />
+      </>
+    );
   }
 
-  // biome-ignore lint/style/noNonNullAssertion: we know contentData is defined
-  return <RenderBlock {...contentData!} />;
+  return (
+    <SlotContext.Provider value={slotContext}>{toRender}</SlotContext.Provider>
+  );
 }

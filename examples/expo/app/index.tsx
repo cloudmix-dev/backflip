@@ -1,6 +1,7 @@
 import {
   RenderComponent,
   type RenderedComponentConfig,
+  Slot,
 } from "@backflipjs/react";
 
 import { Button } from "../components/button";
@@ -46,6 +47,10 @@ export default function HomeScreen() {
           <DateTime.Skeleton />
         </Container>
       }
-    />
+    >
+      <Slot name="footer">
+        <Text content="This is the footer" />
+      </Slot>
+    </RenderComponent>
   );
 }

@@ -6,8 +6,12 @@ import {
   type RenderedComponentConfig,
 } from "@backflipjs/client";
 
-import { Provider } from "./components/provider";
-import { RenderComponent } from "./components/render-component";
+import { Provider, type ProviderProps } from "./components/provider";
+import {
+  RenderComponent,
+  type RenderContentProps,
+} from "./components/render-component";
+import { Slot, type SlotProps } from "./components/slot";
 import { Registry } from "./registry";
 
 export {
@@ -16,7 +20,11 @@ export {
   Provider,
   Registry,
   RenderComponent,
+  Slot,
   type ClientOptions,
   type ClientSendOptions,
   type RenderedComponentConfig,
+  type RenderContentProps,
+  type ProviderProps,
+  type SlotProps,
 };

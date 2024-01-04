@@ -1,3 +1,4 @@
+import { Slot } from "@backflipjs/react";
 import { styled } from "nativewind";
 import { View } from "react-native";
 
@@ -10,6 +11,7 @@ export function Container({ children }: React.PropsWithChildren) {
       style={{ gap: 16 }}
     >
       {children}
+      <Slot name="footer" />
     </StyledView>
   );
 }
