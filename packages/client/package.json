@@ -1,6 +1,6 @@
 {
   "name": "@backflipjs/client",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "main": "./dist/index.cjs.js",
   "module": "./dist/index.es.mjs",
   "types": "./dist/index.d.ts",
@@ -16,21 +16,26 @@
       }
     }
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "sideEffects": false,
   "scripts": {
     "build": "vite build",
     "prepare": "npm run build",
     "tsc": "tsc"
   },
-  "keywords": ["backflipjs", "client"],
+  "keywords": [
+    "backflipjs",
+    "client"
+  ],
   "author": "samuel.laycock@cloudmix.dev",
   "license": "MIT",
   "dependencies": {
     "superjson": "1.13.3"
   },
   "devDependencies": {
-    "@backflipjs/server": "workspace:~0.0.6",
+    "@backflipjs/server": "workspace:~0.0.7",
     "vite-plugin-dts": "~3.7.0"
   },
   "engines": {

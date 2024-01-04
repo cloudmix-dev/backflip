@@ -1,5 +1,11 @@
 # @backflipjs/react
 
+## 0.0.7
+
+### Patch Changes
+
+- 97ef1d3: Add Slot component to @backflipjs/react
+
 ## 0.0.6
 
 ### Patch Changes

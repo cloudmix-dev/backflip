@@ -9,10 +9,10 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@backflipjs/browser": "workspace:~0.0.6",
-    "@backflipjs/client": "workspace:~0.0.6",
-    "@backflipjs/react": "workspace:~0.0.6",
-    "@backflipjs/server": "workspace:~0.0.6",
+    "@backflipjs/browser": "workspace:~0.0.7",
+    "@backflipjs/client": "workspace:~0.0.7",
+    "@backflipjs/react": "workspace:~0.0.7",
+    "@backflipjs/server": "workspace:~0.0.7",
     "@remix-run/node": "~2.4.1",
     "@remix-run/react": "~2.4.1",
     "@remix-run/serve": "~2.4.1",
