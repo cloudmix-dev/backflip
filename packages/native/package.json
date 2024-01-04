@@ -16,22 +16,19 @@
       }
     }
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "sideEffects": false,
   "scripts": {
     "build": "vite build",
     "prepare": "npm run build",
     "tsc": "tsc"
   },
-  "keywords": [
-    "backflipjs",
-    "native",
-    "react-native",
-    "ios",
-    "android"
-  ],
+  "keywords": ["backflipjs", "native", "react-native", "ios", "android"],
+  "author": "samuel.laycock@cloudmix.dev",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "expo-secure-store": "~12.5.0"
   },

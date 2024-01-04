@@ -16,21 +16,19 @@
       }
     }
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "sideEffects": false,
   "scripts": {
     "build": "vite build",
     "prepare": "npm run build",
     "tsc": "tsc"
   },
-  "keywords": [
-    "backflipjs",
-    "browser"
-  ],
+  "keywords": ["backflipjs", "browser"],
   "author": "samuel.laycock@cloudmix.dev",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "idb": "~8.0.0"
   },
