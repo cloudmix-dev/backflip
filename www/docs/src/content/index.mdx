@@ -429,9 +429,31 @@ While ensuring your configurations include fresh data is desirable in many
 situations, there will also likely be `components` whose configuration rarely
 change - in these cases, you can utilize a `Cache`.
 
-<Code
-  language="typescript"
-  content={`import { Cache, Client } from "@backflipjs/client";
+Any response from the `Server` that contains a `Cache-Control` header will be
+respected by the `Client`'s `Cache` (if confogured), e.g. a response with a
+`Cache-Control` header of `public, max-age=60` will be cached for **60 seconds**
+before the `Client` will make another request to the `Server` for that
+`component` configuration (with the same `input`).
+
+<div className="space-y-6">
+  <Code
+    language="typescript"
+    content={`import { Server } from "@backflipjs/server";
+
+const server = new Server();
+
+server.component("home", ({ resHeaders }) => {
+  // ...
+  resHeaders.set("Cache-Control", "public, max-age=60"); // Cache the response for 60 seconds
+  // ...
+});
+
+//...`}
+    copy
+  />
+  <Code
+    language="typescript"
+    content={`import { Cache, Client } from "@backflipjs/client";
 
 const client = new Client({
   //...
@@ -440,8 +462,9 @@ const client = new Client({
 });
 
 //...`}
-  copy
-/>
+    copy
+  />
+</div>
 
 The default `Cache` provided is an **in-memory** one - if you would like
 persistance between sessions then you need to utilize a `Cache` with a storage
