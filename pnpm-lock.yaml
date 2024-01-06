@@ -220,8 +220,8 @@ importers:
         specifier: ~0.3.0
         version: 0.3.0
       '@cloudmix-dev/react':
-        specifier: ~0.0.18
-        version: 0.0.18(react-dom@18.2.0)(react@18.2.0)
+        specifier: ~0.0.22
+        version: 0.0.22(react-dom@18.2.0)(react@18.2.0)
       '@remix-run/cloudflare':
         specifier: ~2.4.1
         version: 2.4.1(@cloudflare/workers-types@4.20231218.0)(typescript@5.3.3)
@@ -248,8 +248,8 @@ importers:
         specifier: ~4.20231218.0
         version: 4.20231218.0
       '@cloudmix-dev/tailwind':
-        specifier: ~0.0.18
-        version: 0.0.18
+        specifier: ~0.0.22
+        version: 0.0.22
       '@mdx-js/rollup':
         specifier: ~3.0.0
         version: 3.0.0(rollup@4.9.2)
@@ -2094,8 +2094,8 @@ packages:
   /@cloudflare/workers-types@4.20231218.0:
     resolution: {integrity: sha512-Vs1FKjfUjXYGbCsXzkl+ITp0Iyb6QiW6+vTERTNThC+v96T0IvPVAioH4tT20rXwoxAfxh380mAaxYtTrJUNVg==}
 
-  /@cloudmix-dev/react@0.0.18(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-LJRigTQUe8AQHJjnI+9vGeIn16BZT86fJz2eLA3A6Pog31D4QumHh4cSJuDaGHRmyL+IP4zjXewoDVzvrryM0g==}
+  /@cloudmix-dev/react@0.0.22(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-xdUznGJ0OfdL472iKHlzrjNbLVreD4PJ62+u8Pa3K6CqfuITdmPK/V3dDQYoKJ55aqkLaN/BoGEUaS6gjCi36A==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       react: ~18.2.0
@@ -2116,8 +2116,8 @@ packages:
       - react-dom
     dev: false
 
-  /@cloudmix-dev/tailwind@0.0.18:
-    resolution: {integrity: sha512-HdCTQjHGtVS943TuaMzCWf3m8HvNE3cKCEdOjtXn7fzMQkLIrXkCs8ac3CWSXqwJ//l4w3xXedBDL5o8NCj5/g==}
+  /@cloudmix-dev/tailwind@0.0.22:
+    resolution: {integrity: sha512-9i6z+dlFHl9+6lO0Ni6Hzf39G8xQPUHeKtUJoRfjEKsjsW8z2JMFMJnKX1NARPK0qT8aX7DR+9J32Mvy5feBZg==}
     engines: {node: '>=18.0.0'}
     dependencies:
       '@tailwindcss/container-queries': 0.1.1(tailwindcss@3.4.0)
@@ -5957,6 +5957,7 @@ packages:
   /@remix-run/dev@2.4.1(@remix-run/serve@2.4.1)(@types/node@18.19.4)(typescript@5.3.3)(vite@5.0.10):
     resolution: {integrity: sha512-T8GLCKpZ8AX/NCJ+vyMmcTq328xo9stvDSXG2hSJx7njz4Q9sC25miQLXPRb3Lx/Sdf4YlJhWQpR6uq5pnXCZg==}
     engines: {node: '>=18.0.0'}
+    hasBin: true
     peerDependencies:
       '@remix-run/serve': ^2.4.1
       typescript: ^5.1.0
@@ -7087,6 +7088,7 @@ packages:
   /autoprefixer@10.4.16(postcss@8.4.32):
     resolution: {integrity: sha512-7vd3UC6xKp0HLfua5IjZlcXvGAGy7cBAXTg2lyQ/8WpNhd6SiZ8Be+xm3FyBSYJx5GKcpRCzBh7RH4/0dnY+uQ==}
     engines: {node: ^10 || ^12 || >=14}
+    hasBin: true
     peerDependencies:
       postcss: ^8.1.0
     dependencies:
@@ -10507,6 +10509,7 @@ packages:
 
   /jscodeshift@0.14.0(@babel/preset-env@7.23.7):
     resolution: {integrity: sha512-7eCC1knD7bLUPuSCwXsMZUH51O8jIcoVyKtI6P0XM0IVzlGjckPy3FIwQlorzbN0Sg79oK+RlohN32Mqf/lrYA==}
+    hasBin: true
     peerDependencies:
       '@babel/preset-env': ^7.1.6
     dependencies:
@@ -13505,6 +13508,7 @@ packages:
   /react-native@0.73.1(@babel/core@7.23.7)(@babel/preset-env@7.23.7)(react@18.2.0):
     resolution: {integrity: sha512-nLl9O2yKRh1nMXwsk4SUiD0ddd19RqlKgNU9AU8bTK/zD2xwnVOG56YK1/22SN67niWyoeG83vVg1eTk+S6ReA==}
     engines: {node: '>=18'}
+    hasBin: true
     peerDependencies:
       react: 18.2.0
     dependencies:
@@ -15380,6 +15384,7 @@ packages:
 
   /update-browserslist-db@1.0.13(browserslist@4.22.2):
     resolution: {integrity: sha512-xebP81SNcPuNpPP3uzeW1NYXxI3rxyJzF3pD6sH4jE7o/IX+WtSpwnVU+qIsDPyk0d3hmFQ7mjqc6AtV604hbg==}
+    hasBin: true
     peerDependencies:
       browserslist: '>= 4.21.0'
     dependencies:
@@ -15573,6 +15578,7 @@ packages:
   /vite@4.5.1(@types/node@18.19.4):
     resolution: {integrity: sha512-AXXFaAJ8yebyqzoNB9fu2pHoo/nWX+xZlaRwoeYUxEqBO+Zj4msE5G+BhGBll9lYEKv9Hfks52PAF2X7qDYXQA==}
     engines: {node: ^14.18.0 || >=16.0.0}
+    hasBin: true
     peerDependencies:
       '@types/node': '>= 14'
       less: '*'
@@ -15608,6 +15614,7 @@ packages:
   /vite@5.0.10(@types/node@18.19.4):
     resolution: {integrity: sha512-2P8J7WWgmc355HUMlFrwofacvr98DAjoE52BfdbwQtyLH06XKwaL/FMnmKM2crF0iX4MpmMKoDlNCB1ok7zHCw==}
     engines: {node: ^18.0.0 || >=20.0.0}
+    hasBin: true
     peerDependencies:
       '@types/node': ^18.0.0 || >=20.0.0
       less: '*'
@@ -15653,6 +15660,7 @@ packages:
 
   /vue-tsc@1.8.27(typescript@5.3.3):
     resolution: {integrity: sha512-WesKCAZCRAbmmhuGl3+VrdWItEvfoFIPXOvUJkjULi+x+6G/Dy69yO3TBRJDr9eUlmsNAwVmxsNZxvHKzbkKdg==}
+    hasBin: true
     peerDependencies:
       typescript: '*'
     dependencies:

@@ -34,7 +34,7 @@ export default function Index() {
             <Content />
           </Prose>
         </article>
-        <div className="w-96 hidden lg:block lg:sticky lg:top-[0.5rem]">
+        <div className="w-96 hidden lg:block lg:sticky lg:top-[5.25rem]">
           <TableOfContents
             contentQuerySelector="article"
             scrollQuerySelector="main > div"

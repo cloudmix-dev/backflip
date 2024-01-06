@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@cloudflare/kv-asset-handler": "~0.3.0",
-    "@cloudmix-dev/react": "~0.0.18",
+    "@cloudmix-dev/react": "~0.0.22",
     "@remix-run/cloudflare": "~2.4.1",
     "@remix-run/react": "~2.4.1",
     "@remix-run/server-runtime": "~2.4.1",
@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "~4.20231218.0",
-    "@cloudmix-dev/tailwind": "~0.0.18",
+    "@cloudmix-dev/tailwind": "~0.0.22",
     "@mdx-js/rollup": "~3.0.0",
     "@remix-run/dev": "~2.4.1",
     "@types/cookie": "~0.6.0",

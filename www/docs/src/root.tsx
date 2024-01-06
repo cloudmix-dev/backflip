@@ -29,14 +29,14 @@ export default function App() {
   const { theme } = useLoaderData<typeof loader>();
 
   return (
-    <html lang="en" className={`${theme} h-full w-full`}>
+    <html lang="en" className={`${theme}`}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
       </head>
-      <body className="h-full w-full bg-neutral-50 bg-gradient-to-br from-neutral-50 via-neutral-50 via-75% to-brand-100 text-neutral-900 dark:bg-neutral-950 dark:from-neutral-950 dark:via-neutral-950 dark:to-brand-950 dark:text-neutral-100">
+      <body className="bg-neutral-50 bg-gradient-to-br from-neutral-50 via-neutral-50 via-75% to-brand-100 text-neutral-900 dark:bg-neutral-950 dark:from-neutral-950 dark:via-neutral-950 dark:to-brand-950 dark:text-neutral-100">
         <AppShell
           renderActions={
             <>
@@ -65,18 +65,9 @@ export default function App() {
             </>
           }
         >
-          <main className="flex-grow pb-6 md:pb-12">
-            <div className="container m-auto px-4">
-              <Outlet />
-            </div>
-          </main>
-          <footer className="flex-shrink-0">
-            <div className="container m-auto px-4">
-              <div className="flex justify-center items-center h-16 text-sm">
-                <p>&copy; {new Date().getFullYear()} Cloudmix</p>
-              </div>
-            </div>
-          </footer>
+          <div className="container m-auto px-4">
+            <Outlet />
+          </div>
         </AppShell>
         <ScrollRestoration />
         <Scripts />
