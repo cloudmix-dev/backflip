@@ -430,7 +430,7 @@ situations, there will also likely be `components` whose configuration rarely
 change - in these cases, you can utilize a `Cache`.
 
 Any response from the `Server` that contains a `Cache-Control` header will be
-respected by the `Client`'s `Cache` (if confogured), e.g. a response with a
+respected by the `Client`'s `Cache` (if configured), e.g. a response with a
 `Cache-Control` header of `public, max-age=60` will be cached for **60 seconds**
 before the `Client` will make another request to the `Server` for that
 `component` configuration (with the same `input`).
