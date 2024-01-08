@@ -34,11 +34,12 @@ export default function Index() {
             <Content />
           </Prose>
         </article>
-        <div className="w-96 hidden lg:block lg:sticky lg:top-[5.25rem]">
+        <div className="h-full max-h-[calc(100vh-6.5rem)] w-96 hidden lg:flex lg:sticky lg:top-[5.25rem]">
           <TableOfContents
             contentQuerySelector="article"
             scrollQuerySelector="main > div"
             scrollOffset={64}
+            className="overflow-auto"
           />
         </div>
       </div>
