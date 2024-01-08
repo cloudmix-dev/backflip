@@ -30,7 +30,7 @@
     "access": "public"
   },
   "dependencies": {
-    "superjson": "1.13.3"
+    "superjson": "2.2.1"
   },
   "devDependencies": {
     "vite-plugin-dts": "~3.7.0"
