@@ -220,8 +220,8 @@ importers:
         specifier: ~0.3.0
         version: 0.3.0
       '@cloudmix-dev/react':
-        specifier: ~0.0.22
-        version: 0.0.22(react-dom@18.2.0)(react@18.2.0)
+        specifier: ~0.0.23
+        version: 0.0.23(react-dom@18.2.0)(react@18.2.0)
       '@remix-run/cloudflare':
         specifier: ~2.4.1
         version: 2.4.1(@cloudflare/workers-types@4.20231218.0)(typescript@5.3.3)
@@ -248,8 +248,8 @@ importers:
         specifier: ~4.20231218.0
         version: 4.20231218.0
       '@cloudmix-dev/tailwind':
-        specifier: ~0.0.22
-        version: 0.0.22
+        specifier: ~0.0.23
+        version: 0.0.23
       '@mdx-js/rollup':
         specifier: ~3.0.0
         version: 3.0.0(rollup@4.9.2)
@@ -2094,8 +2094,8 @@ packages:
   /@cloudflare/workers-types@4.20231218.0:
     resolution: {integrity: sha512-Vs1FKjfUjXYGbCsXzkl+ITp0Iyb6QiW6+vTERTNThC+v96T0IvPVAioH4tT20rXwoxAfxh380mAaxYtTrJUNVg==}
 
-  /@cloudmix-dev/react@0.0.22(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-xdUznGJ0OfdL472iKHlzrjNbLVreD4PJ62+u8Pa3K6CqfuITdmPK/V3dDQYoKJ55aqkLaN/BoGEUaS6gjCi36A==}
+  /@cloudmix-dev/react@0.0.23(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-gzJlYUfvEF6oALbYhjrei3p4r9Bd1KO9Z6C0Zo6jRnKiE8LnhL8UKlvVvh8RtcPk0lOgluKrWcbMLDgH1dai2w==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       react: ~18.2.0
@@ -2116,8 +2116,8 @@ packages:
       - react-dom
     dev: false
 
-  /@cloudmix-dev/tailwind@0.0.22:
-    resolution: {integrity: sha512-9i6z+dlFHl9+6lO0Ni6Hzf39G8xQPUHeKtUJoRfjEKsjsW8z2JMFMJnKX1NARPK0qT8aX7DR+9J32Mvy5feBZg==}
+  /@cloudmix-dev/tailwind@0.0.23:
+    resolution: {integrity: sha512-xrk9T9KmKmMMHEFLHopaau3tkHvHvY+XF7eA2fPmS6J4zVMR8hbeYWUiIBuIfiUlxTfmoM39P9rWqaDrC/6d3w==}
     engines: {node: '>=18.0.0'}
     dependencies:
       '@tailwindcss/container-queries': 0.1.1(tailwindcss@3.4.0)
