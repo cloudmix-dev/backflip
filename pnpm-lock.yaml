@@ -33,8 +33,8 @@ importers:
         specifier: ~5.3.3
         version: 5.3.3
       vite:
-        specifier: ~5.0.10
-        version: 5.0.10(@types/node@20.10.6)
+        specifier: ~5.0.12
+        version: 5.0.12(@types/node@20.10.6)
 
   examples/expo:
     dependencies:
@@ -132,7 +132,7 @@ importers:
     devDependencies:
       '@remix-run/dev':
         specifier: ~2.4.1
-        version: 2.4.1(@remix-run/serve@2.5.1)(@types/node@20.10.6)(typescript@5.3.3)(vite@5.0.10)
+        version: 2.4.1(@remix-run/serve@2.5.1)(@types/node@20.10.6)(typescript@5.3.3)(vite@5.0.12)
       '@types/react':
         specifier: ~18.2.46
         version: 18.2.46
@@ -154,7 +154,7 @@ importers:
         version: link:../client
       vite-plugin-dts:
         specifier: ~3.7.0
-        version: 3.7.0(@types/node@20.10.6)(typescript@5.3.3)(vite@5.0.10)
+        version: 3.7.0(@types/node@20.10.6)(typescript@5.3.3)(vite@5.0.12)
 
   packages/client:
     dependencies:
@@ -167,7 +167,7 @@ importers:
         version: link:../server
       vite-plugin-dts:
         specifier: ~3.7.0
-        version: 3.7.0(@types/node@20.10.6)(typescript@5.3.3)(vite@5.0.10)
+        version: 3.7.0(@types/node@20.10.6)(typescript@5.3.3)(vite@5.0.12)
 
   packages/native:
     dependencies:
@@ -180,7 +180,7 @@ importers:
         version: link:../client
       vite-plugin-dts:
         specifier: ~3.7.0
-        version: 3.7.0(@types/node@20.10.6)(typescript@5.3.3)(vite@5.0.10)
+        version: 3.7.0(@types/node@20.10.6)(typescript@5.3.3)(vite@5.0.12)
 
   packages/react:
     dependencies:
@@ -212,7 +212,7 @@ importers:
     devDependencies:
       vite-plugin-dts:
         specifier: ~3.7.0
-        version: 3.7.0(@types/node@20.10.6)(typescript@5.3.3)(vite@5.0.10)
+        version: 3.7.0(@types/node@20.10.6)(typescript@5.3.3)(vite@5.0.12)
 
   www/docs:
     dependencies:
@@ -255,7 +255,7 @@ importers:
         version: 3.0.0(rollup@4.9.2)
       '@remix-run/dev':
         specifier: ~2.4.1
-        version: 2.4.1(@remix-run/serve@2.5.1)(@types/node@20.10.6)(typescript@5.3.3)(vite@5.0.10)
+        version: 2.4.1(@remix-run/serve@2.5.1)(@types/node@20.10.6)(typescript@5.3.3)(vite@5.0.12)
       '@types/cookie':
         specifier: ~0.6.0
         version: 0.6.0
@@ -5936,7 +5936,7 @@ packages:
       typescript: 5.3.3
     dev: false
 
-  /@remix-run/dev@2.4.1(@remix-run/serve@2.5.1)(@types/node@20.10.6)(typescript@5.3.3)(vite@5.0.10):
+  /@remix-run/dev@2.4.1(@remix-run/serve@2.5.1)(@types/node@20.10.6)(typescript@5.3.3)(vite@5.0.12):
     resolution: {integrity: sha512-T8GLCKpZ8AX/NCJ+vyMmcTq328xo9stvDSXG2hSJx7njz4Q9sC25miQLXPRb3Lx/Sdf4YlJhWQpR6uq5pnXCZg==}
     engines: {node: '>=18.0.0'}
     hasBin: true
@@ -6006,7 +6006,7 @@ packages:
       tar-fs: 2.1.1
       tsconfig-paths: 4.2.0
       typescript: 5.3.3
-      vite: 5.0.10(@types/node@20.10.6)
+      vite: 5.0.12(@types/node@20.10.6)
       ws: 7.5.9
     transitivePeerDependencies:
       - '@types/node'
@@ -8572,6 +8572,7 @@ packages:
   /esbuild@0.18.20:
     resolution: {integrity: sha512-ceqxoedUrcayh7Y7ZX6NdbbDzGROiyVBgC4PriJThBKSVPWnnFHZAkfI1lJT8QFkOwH4qOS2SJkS4wvpGl8BpA==}
     engines: {node: '>=12'}
+    hasBin: true
     requiresBuild: true
     optionalDependencies:
       '@esbuild/android-arm': 0.18.20
@@ -8601,6 +8602,7 @@ packages:
   /esbuild@0.19.11:
     resolution: {integrity: sha512-HJ96Hev2hX/6i5cDVwcqiJBBtuo9+FeIJOtZ9W1kA5M6AMJRHUZlpYZ1/SbEwtO0ioNAW8rUooVpC/WehY2SfA==}
     engines: {node: '>=12'}
+    hasBin: true
     requiresBuild: true
     optionalDependencies:
       '@esbuild/aix-ppc64': 0.19.11
@@ -14056,6 +14058,7 @@ packages:
   /rollup@3.29.4:
     resolution: {integrity: sha512-oWzmBZwvYrU0iJHtDmhsm662rC15FRXmcjCk1xD771dFDx5jJ02ufAQQTn0etB2emNk4J9EZg/yWKpsn9BWGRw==}
     engines: {node: '>=14.18.0', npm: '>=8.0.0'}
+    hasBin: true
     optionalDependencies:
       fsevents: 2.3.3
     dev: true
@@ -14063,6 +14066,7 @@ packages:
   /rollup@4.9.2:
     resolution: {integrity: sha512-66RB8OtFKUTozmVEh3qyNfH+b+z2RXBVloqO2KCC/pjFaGaHtxP9fVfOQKPSGXg2mElmjmxjW/fZ7iKrEpMH5Q==}
     engines: {node: '>=18.0.0', npm: '>=8.0.0'}
+    hasBin: true
     optionalDependencies:
       '@rollup/rollup-android-arm-eabi': 4.9.2
       '@rollup/rollup-android-arm64': 4.9.2
@@ -15608,6 +15612,30 @@ packages:
       - supports-color
     dev: true
 
+  /vite-plugin-dts@3.7.0(@types/node@20.10.6)(typescript@5.3.3)(vite@5.0.12):
+    resolution: {integrity: sha512-np1uPaYzu98AtPReB8zkMnbjwcNHOABsLhqVOf81b3ol9b5M2wPcAVs8oqPnOpr6Us+7yDXVauwkxsk5+ldmRA==}
+    engines: {node: ^14.18.0 || >=16.0.0}
+    peerDependencies:
+      typescript: '*'
+      vite: '*'
+    peerDependenciesMeta:
+      vite:
+        optional: true
+    dependencies:
+      '@microsoft/api-extractor': 7.39.0(@types/node@20.10.6)
+      '@rollup/pluginutils': 5.1.0(rollup@4.9.2)
+      '@vue/language-core': 1.8.27(typescript@5.3.3)
+      debug: 4.3.4
+      kolorist: 1.8.0
+      typescript: 5.3.3
+      vite: 5.0.12(@types/node@20.10.6)
+      vue-tsc: 1.8.27(typescript@5.3.3)
+    transitivePeerDependencies:
+      - '@types/node'
+      - rollup
+      - supports-color
+    dev: true
+
   /vite@4.5.1(@types/node@20.10.6):
     resolution: {integrity: sha512-AXXFaAJ8yebyqzoNB9fu2pHoo/nWX+xZlaRwoeYUxEqBO+Zj4msE5G+BhGBll9lYEKv9Hfks52PAF2X7qDYXQA==}
     engines: {node: ^14.18.0 || >=16.0.0}
@@ -15646,6 +15674,42 @@ packages:
 
   /vite@5.0.10(@types/node@20.10.6):
     resolution: {integrity: sha512-2P8J7WWgmc355HUMlFrwofacvr98DAjoE52BfdbwQtyLH06XKwaL/FMnmKM2crF0iX4MpmMKoDlNCB1ok7zHCw==}
+    engines: {node: ^18.0.0 || >=20.0.0}
+    hasBin: true
+    peerDependencies:
+      '@types/node': ^18.0.0 || >=20.0.0
+      less: '*'
+      lightningcss: ^1.21.0
+      sass: '*'
+      stylus: '*'
+      sugarss: '*'
+      terser: ^5.4.0
+    peerDependenciesMeta:
+      '@types/node':
+        optional: true
+      less:
+        optional: true
+      lightningcss:
+        optional: true
+      sass:
+        optional: true
+      stylus:
+        optional: true
+      sugarss:
+        optional: true
+      terser:
+        optional: true
+    dependencies:
+      '@types/node': 20.10.6
+      esbuild: 0.19.11
+      postcss: 8.4.32
+      rollup: 4.9.2
+    optionalDependencies:
+      fsevents: 2.3.3
+    dev: true
+
+  /vite@5.0.12(@types/node@20.10.6):
+    resolution: {integrity: sha512-4hsnEkG3q0N4Tzf1+t6NdN9dg/L3BM+q8SWgbSPnJvrgH2kgdyzfVJwbR1ic69/4uMJJ/3dqDZZE5/WwqW8U1w==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
     peerDependencies:

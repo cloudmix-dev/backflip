@@ -17,6 +17,12 @@
     "husky": "~8.0.3",
     "turbo": "~1.11.3",
     "typescript": "~5.3.3",
-    "vite": "~5.0.10"
+    "vite": "~5.0.12"
+  },
+  "pmpm": {
+    "overrides": {
+      "react": "npm:@preact/compat@latest",
+      "react-dom": "npm:@preact/compat@latest"
+    }
   }
 }
