@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "@backflipjs/client": "workspace:~0.0.7",
-    "@types/react": "~18.2.46",
+    "@types/react": "~18.2.52",
     "@vitejs/plugin-react": "~4.2.1",
     "react": "~18.2.0",
     "vite-plugin-dts": "~3.7.0"
