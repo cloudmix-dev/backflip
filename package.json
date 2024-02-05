@@ -15,7 +15,7 @@
     "@commitlint/config-conventional": "~18.4.4",
     "changeset": "~0.2.6",
     "husky": "~8.0.3",
-    "turbo": "~1.11.3",
+    "turbo": "~1.12.2",
     "typescript": "~5.3.3",
     "vite": "~5.0.12"
   },
