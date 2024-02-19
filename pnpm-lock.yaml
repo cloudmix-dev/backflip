@@ -24,8 +24,8 @@ importers:
         specifier: ~0.2.6
         version: 0.2.6
       husky:
-        specifier: ~9.0.10
-        version: 9.0.10
+        specifier: ~9.0.11
+        version: 9.0.11
       turbo:
         specifier: ~1.12.4
         version: 1.12.4
@@ -3189,7 +3189,7 @@ packages:
       require-from-string: 2.0.2
       requireg: 0.2.2
       resolve-from: 5.0.0
-      semver: 7.5.4
+      semver: 7.6.0
       send: 0.18.0
       slugify: 1.6.6
       structured-headers: 0.4.1
@@ -3317,7 +3317,7 @@ packages:
       getenv: 1.0.0
       glob: 7.1.6
       resolve-from: 5.0.0
-      semver: 7.5.4
+      semver: 7.6.0
       slash: 3.0.0
       xcode: 3.0.1
       xml2js: 0.6.0
@@ -9998,8 +9998,8 @@ packages:
     resolution: {integrity: sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==}
     engines: {node: '>=10.17.0'}
 
-  /husky@9.0.10:
-    resolution: {integrity: sha512-TQGNknoiy6bURzIO77pPRu+XHi6zI7T93rX+QnJsoYFf3xdjKOur+IlfqzJGMHIK/wXrLg+GsvMs8Op7vI2jVA==}
+  /husky@9.0.11:
+    resolution: {integrity: sha512-AB6lFlbwwyIqMdHYhwPe+kjOC3Oc5P3nThEoW/AaO2BX3vJDjWPFxYLxokUZOo6RNX20He3AaT8sESs9NJcmEw==}
     engines: {node: '>=18'}
     hasBin: true
     dev: true
@@ -14308,7 +14308,6 @@ packages:
     hasBin: true
     dependencies:
       lru-cache: 6.0.0
-    dev: true
 
   /send@0.18.0:
     resolution: {integrity: sha512-qqWzuOjSFOuqPjFe4NOsMLafToQQwBSOEpS+FwEt3A2V3vKubTquT3vmLTQpFgMXp8AlFWFuP1qKaJZOtPpVXg==}
