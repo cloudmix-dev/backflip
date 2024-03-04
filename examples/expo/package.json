@@ -14,7 +14,7 @@
     "@backflipjs/native": "workspace:~0.0.7",
     "@backflipjs/react": "workspace:~0.0.7",
     "@backflipjs/server": "workspace:~0.0.7",
-    "expo": "50.0.0-preview.7",
+    "expo": "50.0.8",
     "expo-constants": "~15.4.5",
     "expo-linking": "~6.2.1",
     "expo-router": "~3.4.1",
